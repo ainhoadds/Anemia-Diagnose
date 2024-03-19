@@ -21,9 +21,9 @@ public class OperationUnitTest {
     @Test
     public void test() {
         LOG.info("Creating RuleUnit");
-        PatientUnit operationUnit = new PatientUnit();
+        ParametersUnit operationUnit = new ParametersUnit();
 
-        RuleUnitInstance<PatientUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(operationUnit);
+        RuleUnitInstance<ParametersUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(operationUnit);
         try {
             LOG.info("Insert data"); //Registra un mensaje de información indicando que se están insertando datos.
             //Crea varias instancias de la clase Operation con diferentes valores para probar.
@@ -36,13 +36,13 @@ public class OperationUnitTest {
             Patient op7 = new Patient(6, false, true, true, BloodVolume.DECREASED, 100, 1000, 500);
 
             //Agrega las operaciones creadas anteriormente a operationUnit.
-            operationUnit.getPatients().add(op1);
-            operationUnit.getPatients().add(op2);
-            operationUnit.getPatients().add(op3);
-            operationUnit.getPatients().add(op4);
-            operationUnit.getPatients().add(op5);
-            operationUnit.getPatients().add(op6);
-            operationUnit.getPatients().add(op7);
+            operationUnit.getParameters().add(op1);
+            operationUnit.getParameters().add(op2);
+            operationUnit.getParameters().add(op3);
+            operationUnit.getParameters().add(op4);
+            operationUnit.getParameters().add(op5);
+            operationUnit.getParameters().add(op6);
+            operationUnit.getParameters().add(op7);
 
             LOG.info("Run query. Rules are also fired");
             //Registra un mensaje de información indicando que se está ejecutando una consulta y que también se activarán reglas.

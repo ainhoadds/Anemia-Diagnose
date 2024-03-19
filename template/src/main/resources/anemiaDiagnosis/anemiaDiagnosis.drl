@@ -17,17 +17,17 @@
  */
 package anemiaDiagnosis;
 
-unit PatientUnit;
+unit ParametersUnit;
 
 rule "AnemicSyndrome"
 when
-    $patient : /patients[hb < 8, epo > 18.5, skinPalenes == true, tachycardia == true, tinnitus == true,
+    $parameters : /parameters[hb < 8, epo > 18.5, skinPalenes == true, tachycardia == true, tinnitus == true,
     palpitations == true, chestPain == true, infarction == true, dizziness == true, blurredVision == true,
     headAche == true, fatigue == true, musclePain == true, dyspnea == true, tachypnea == true, coldLimp == true]
 then
     // IF I WANT TO DEBUG THE CODE, I CAN PRINT HERE WHATEVER I WANT System.out.println( op );
-    System.out.println( $patient + " has Anemic Syndrome. ");
-    $patient.setAnemia("Anemic Syndrome");
+    //System.out.println( $patient + " has Anemic Syndrome. ");
+    $parameters.setAnemia(Anemia.ANEMIC_SYNDROME);
     /*
     OR:
         modify ($operation) { setAuthorized(true)}
@@ -41,66 +41,66 @@ end
 */
 rule "PosthemorrhagicAnemia"
 when
-    $patient : /patients[retyculocytes > 2.5, bloodVolume == BloodVolume.DECREASED, rbc < 4.5, mchc < 310, fe < 60,
+    $parameters : /parameters[retyculocytes > 2.5, bloodVolume == BloodVolume.DECREASED, rbc < 4.5, mchc < 310, fe < 60,
     skinPalenes == true, tachycardia == true, dizziness == true, fatigue == true, dyspnea == true, tachypnea == true,
     internHemorrage == true, externHemorrage == true]
 then
-    $patient.setAnemia("Anemic Syndrome");
+    $parameters.setAnemia(Anemia.POSTHEMORRAGIC_ANEMIA);
 end
 
 rule "HemolyticAnemia"
 when
-    $patient : /patients[hb > 8 && hb < 13.5, epo > 18.5, retyculocytes > 2.5, rbc > 5.9, vcm > 100, mch > 32,
+    $parameters : /parameters[hb > 8 && hb < 13.5, epo > 18.5, retyculocytes > 2.5, rbc > 5.9, vcm > 100, mch > 32,
      hbUrine == true, feUrine == true, fe > 170, bilirubine > 1.0, ldh >150, haptoglobin < 41, skinPalenes == true,
      fatigue == true, jaundice == true, splenomegalia == true, cranealBallooning == true, aplasticCrisis == true]
 then
-    $patient.setAnemia("Hemolytic Anemia");
+    $parameters.setAnemia(Anemia.HEMOLYTIC_ANEMIA);
 end
 
 rule "InheritedSpherocytosis"
 when
-    $patient : /patients[retyculocytes > 2.5, mcv < 80, mchc < 310, bilirubine > 1.0, ldh > 150, jaundice == true,
+    $parameters : /parameters[retyculocytes > 2.5, mcv < 80, mchc < 310, bilirubine > 1.0, ldh > 150, jaundice == true,
     splenomegalia == true, cranealBallooning == true, aplasticCrisis == true, bacterianInfection == true,
     osteoporosis == true, boneDeformation == true, maxilarBoneHyperplasia == true]
 then
-    $patient.setAnemia("Inherited spherocytosis");
+    $parameters.setAnemia(Anemia.INHERITED_SPHEROCYTOSIS);
 end
 
 rule "Thalassemia"
 when
-    $patient : /patients[mcv < 80, mchc < 360, skinPalenes == true, palpitations == true, headAche == true,
+    $parameters : /parameters[mcv < 80, mchc < 360, skinPalenes == true, palpitations == true, headAche == true,
     fatigue == true, dyspnea == true, coldLimp == true, nausea == true, brittleNails == true, tongueInflamation == true]
 then
-    $patient.setAnemia("Iron-Deficiency Anemia");
+    $parameters.setAnemia(Anemia.THALASSEMIA);
 end
 
 rule "MegaloblasticAnemia"
 when
-    $patient : /patients[anysocytosis < 11.5, mcv > 100, mchc > 360, b12 < 200, folicAcid < 2.7, skinPalenes == true,
+    $parameters : /parameters[anysocytosis < 11.5, mcv > 100, mchc > 360, b12 < 200, folicAcid < 2.7, skinPalenes == true,
     fatigue == true, internHemorrage == true, externHemorrage == true, petechiae == true]
 then
-    $patient.setAnemia("Megaloblastic Anemia");
+    $parameters.setAnemia(Anemia.MEGALOBLASTIC_ANEMIA);
 end
 
 rule "AplasticAnemia"
 when
-    $patient : /patients[plaquets < 7.4, leucocytes< 4.5, rbc < 4.5, skinPalenes == true, headAche == true,
+    $parameters : /parameters[plaquets < 7.4, leucocytes< 4.5, rbc < 4.5, skinPalenes == true, headAche == true,
     fatigue == true, dyspnea == true]
 then
-    $patient.setAnemia("Aplastic Anemia");
+    $parameters.setAnemia(Anemia.APLASTIC_ANEMIA);
 end
 
 rule "ChronicAnemia"
 when
-    $patient : /patients[epo < 2.6]
+    $parameters : /parameters[epo < 2.6]
 then
-    $patient.setAnemia("Chronic Anemia");
+    $parameters.setAnemia(Anemia.CHRONIC_ANEMIA);
 end
 
 rule "Policythemia"
 when
-    $patient : /patients[hb > 17.5, epo > 18.5, hematocrit > 53, bloodVolume == BloodVolume.INCREASED,
+    $parameters : /parameters[hb > 17.5, epo > 18.5, hematocrit > 53, bloodVolume == BloodVolume.INCREASED,
     glucocorticoids > 25]
 then
-    $patient.setAnemia("Policythemia");
+    $parameters.setAnemia(Anemia.POLYCYTHEMIA);
 end
