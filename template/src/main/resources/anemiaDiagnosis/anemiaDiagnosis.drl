@@ -28,6 +28,7 @@ then
     // IF I WANT TO DEBUG THE CODE, I CAN PRINT HERE WHATEVER I WANT System.out.println( op );
     //System.out.println( $patient + " has Anemic Syndrome. ");
     $parameters.setAnemia(Anemia.ANEMIC_SYNDROME);
+    System.out.println($parameters.getAnemia());
     /*
     OR:
         modify ($operation) { setAuthorized(true)}
@@ -46,15 +47,19 @@ when
     internHemorrage == true, externHemorrage == true]
 then
     $parameters.setAnemia(Anemia.POSTHEMORRAGIC_ANEMIA);
+    System.out.println($parameters.getAnemia());
+
 end
 
 rule "HemolyticAnemia"
 when
-    $parameters : /parameters[hb > 8 && hb < 13.5, epo > 18.5, retyculocytes > 2.5, rbc > 5.9, vcm > 100, mch > 32,
+    $parameters : /parameters[hb > 8 && hb < 13.5, epo > 18.5, retyculocytes > 2.5, rbc > 5.9, mcv > 100, mch > 32,
      hbUrine == true, feUrine == true, fe > 170, bilirubine > 1.0, ldh >150, haptoglobin < 41, skinPalenes == true,
      fatigue == true, jaundice == true, splenomegalia == true, cranealBallooning == true, aplasticCrisis == true]
 then
     $parameters.setAnemia(Anemia.HEMOLYTIC_ANEMIA);
+    System.out.println($parameters.getAnemia());
+
 end
 
 rule "InheritedSpherocytosis"
@@ -63,7 +68,7 @@ when
     splenomegalia == true, cranealBallooning == true, aplasticCrisis == true, bacterianInfection == true,
     osteoporosis == true, boneDeformation == true, maxilarBoneHyperplasia == true]
 then
-    $parameters.setAnemia(Anemia.INHERITED_SPHEROCYTOSIS);
+    $parameters.setAnemia(Anemia.HEREDITARY_SPHEROCYTOSIS);
 end
 
 rule "Thalassemia"
@@ -103,4 +108,8 @@ when
     glucocorticoids > 25]
 then
     $parameters.setAnemia(Anemia.POLYCYTHEMIA);
+end
+
+query Diagnose
+    $parameters : /parameters[ epo > 18.5] //en la consutla se busca los parametros cuya hemoglobina este por encima de 18.5
 end

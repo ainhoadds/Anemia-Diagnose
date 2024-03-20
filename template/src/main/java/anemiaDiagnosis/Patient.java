@@ -24,7 +24,7 @@ public class Patient {
         return parameters;
     }
 
-    public void setAnemia(String anemia) {
+    public void setAnemia(Anemia anemia) {
         this.anemia = anemia;
     }
 

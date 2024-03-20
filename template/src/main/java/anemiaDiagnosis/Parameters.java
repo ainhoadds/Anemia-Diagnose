@@ -113,8 +113,70 @@ public class Parameters {
         this.petechiae = petechiae;
     }
 
+    //to facilitate the test, i have created a constructor per rule to just stablish the parametrs that the rule depende on
+
+
+    public Parameters(float hb, float epo, boolean skinPalenes, boolean tachycardia, boolean tinnitus, boolean palpitations, boolean chestPain, boolean infarction, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean musclePain, boolean dyspnea, boolean tachypnea, boolean coldLimp) {
+        this.hb = hb;
+        this.epo = epo;
+        this.skinPalenes = skinPalenes;
+        this.tachycardia = tachycardia;
+        this.tinnitus = tinnitus;
+        this.palpitations = palpitations;
+        this.chestPain = chestPain;
+        this.infarction = infarction;
+        this.dizziness = dizziness;
+        this.blurredVision = blurredVision;
+        this.headAche = headAche;
+        this.fatigue = fatigue;
+        this.musclePain = musclePain;
+        this.dyspnea = dyspnea;
+        this.tachypnea = tachypnea;
+        this.coldLimp = coldLimp;
+    }
+
+    public Parameters(float retyculocytes, BloodVolume bloodVolume, float rbc, int mchc, int fe, boolean skinPalenes, boolean tachycardia, boolean dizziness, boolean fatigue, boolean dyspnea, boolean tachypnea, boolean internHemorrage, boolean externHemorrage) {
+        this.retyculocytes = retyculocytes;
+        this.bloodVolume = bloodVolume;
+        this.rbc = rbc;
+        this.mchc = mchc;
+        this.fe = fe;
+        this.skinPalenes = skinPalenes;
+        this.tachycardia = tachycardia;
+        this.dizziness = dizziness;
+        this.fatigue = fatigue;
+        this.dyspnea = dyspnea;
+        this.tachypnea = tachypnea;
+        this.internHemorrage = internHemorrage;
+        this.externHemorrage = externHemorrage;
+    }
+
+    public Parameters(float hb, float epo, float retyculocytes, float rbc, int mcv, int mch, boolean hbUrine,boolean feUrine,int fe, float bilirubine, int ldh, float haptoglobin, boolean skinPalenes, boolean fatigue, boolean jaundice, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis) {
+        this.hb = hb;
+        this.epo = epo;
+        this.retyculocytes = retyculocytes;
+        this.rbc = rbc;
+        this.mcv = mcv;
+        this.mch = mch;
+        this.haptoglobin = haptoglobin;
+        this.hbUrine = hbUrine;
+        this.fe = fe;
+        this.bilirubine = bilirubine;
+        this.ldh = ldh;
+        this.feUrine = feUrine;
+        this.skinPalenes = skinPalenes;
+        this.fatigue = fatigue;
+        this.jaundice = jaundice;
+        this.splenomegalia = splenomegalia;
+        this.cranealBallooning = cranealBallooning;
+        this.aplasticCrisis = aplasticCrisis;
+    }
+
     public void setAnemia(Anemia anemia) {
         this.anemia = anemia;
+    }
+    public void setBloodVolume(BloodVolume volume) {
+        this.bloodVolume = volume;
     }
 
     public Anemia getAnemia() {
