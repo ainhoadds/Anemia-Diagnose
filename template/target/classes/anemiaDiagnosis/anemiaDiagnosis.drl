@@ -1,0 +1,115 @@
+/*
+ * Copyright 2010 Red Hat, Inc. and/or its affiliates.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Author: Alberto Gil de la Fuente
+ */
+package anemiaDiagnosis;
+
+unit ParametersUnit;
+
+rule "AnemicSyndrome"
+when
+    $parameters : /parameters[hb < 8, epo > 18.5, skinPalenes == true, tachycardia == true, tinnitus == true,
+    palpitations == true, chestPain == true, infarction == true, dizziness == true, blurredVision == true,
+    headAche == true, fatigue == true, musclePain == true, dyspnea == true, tachypnea == true, coldLimp == true]
+then
+    // IF I WANT TO DEBUG THE CODE, I CAN PRINT HERE WHATEVER I WANT System.out.println( op );
+    //System.out.println( $patient + " has Anemic Syndrome. ");
+    $parameters.setAnemia(Anemia.ANEMIC_SYNDROME);
+    System.out.println($parameters.getAnemia());
+    /*
+    OR:
+        modify ($operation) { setAuthorized(true)}
+        System.out.println( $operation + " authorized. ");
+    */
+end
+/*
+query FindAuthorizedOperations
+    $operations : /operations[ authorized == true]
+end
+*/
+rule "PosthemorrhagicAnemia"
+when
+    $parameters : /parameters[retyculocytes > 2.5, bloodVolume == BloodVolume.DECREASED, rbc < 4.5, mchc < 310, fe < 60,
+    skinPalenes == true, tachycardia == true, dizziness == true, fatigue == true, dyspnea == true, tachypnea == true,
+    internHemorrage == true, externHemorrage == true]
+then
+    $parameters.setAnemia(Anemia.POSTHEMORRAGIC_ANEMIA);
+    System.out.println($parameters.getAnemia());
+
+end
+
+rule "HemolyticAnemia"
+when
+    $parameters : /parameters[hb > 8 && hb < 13.5, epo > 18.5, retyculocytes > 2.5, rbc > 5.9, mcv > 100, mch > 32,
+     hbUrine == true, feUrine == true, fe > 170, bilirubine > 1.0, ldh >150, haptoglobin < 41, skinPalenes == true,
+     fatigue == true, jaundice == true, splenomegalia == true, cranealBallooning == true, aplasticCrisis == true]
+then
+    $parameters.setAnemia(Anemia.HEMOLYTIC_ANEMIA);
+    System.out.println($parameters.getAnemia());
+
+end
+
+rule "InheritedSpherocytosis"
+when
+    $parameters : /parameters[retyculocytes > 2.5, mcv < 80, mchc < 310, bilirubine > 1.0, ldh > 150, jaundice == true,
+    splenomegalia == true, cranealBallooning == true, aplasticCrisis == true, bacterianInfection == true,
+    osteoporosis == true, boneDeformation == true, maxilarBoneHyperplasia == true]
+then
+    $parameters.setAnemia(Anemia.HEREDITARY_SPHEROCYTOSIS);
+end
+
+rule "Thalassemia"
+when
+    $parameters : /parameters[mcv < 80, mchc < 360, skinPalenes == true, palpitations == true, headAche == true,
+    fatigue == true, dyspnea == true, coldLimp == true, nausea == true, brittleNails == true, tongueInflamation == true]
+then
+    $parameters.setAnemia(Anemia.THALASSEMIA);
+end
+
+rule "MegaloblasticAnemia"
+when
+    $parameters : /parameters[anysocytosis < 11.5, mcv > 100, mchc > 360, b12 < 200, folicAcid < 2.7, skinPalenes == true,
+    fatigue == true, internHemorrage == true, externHemorrage == true, petechiae == true]
+then
+    $parameters.setAnemia(Anemia.MEGALOBLASTIC_ANEMIA);
+end
+
+rule "AplasticAnemia"
+when
+    $parameters : /parameters[plaquets < 7.4, leucocytes< 4.5, rbc < 4.5, skinPalenes == true, headAche == true,
+    fatigue == true, dyspnea == true]
+then
+    $parameters.setAnemia(Anemia.APLASTIC_ANEMIA);
+end
+
+rule "ChronicAnemia"
+when
+    $parameters : /parameters[epo < 2.6]
+then
+    $parameters.setAnemia(Anemia.CHRONIC_ANEMIA);
+end
+
+rule "Policythemia"
+when
+    $parameters : /parameters[hb > 17.5, epo > 18.5, hematocrit > 53, bloodVolume == BloodVolume.INCREASED,
+    glucocorticoids > 25]
+then
+    $parameters.setAnemia(Anemia.POLYCYTHEMIA);
+end
+
+query Diagnose
+    $parameters : /parameters[ epo > 18.5] //en la consutla se busca los parametros que diagnostiquen sindrome anemico
+end
