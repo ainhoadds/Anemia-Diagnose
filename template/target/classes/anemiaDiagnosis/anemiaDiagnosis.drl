@@ -111,5 +111,5 @@ then
 end
 
 query Diagnose
-    $parameters : /parameters[ epo > 18.5] //en la consutla se busca los parametros que diagnostiquen sindrome anemico
+    $parameters : /parameters[ epo > 18.5] //en la consutla se busca los parametros cuya hemoglobina este por encima de 18.5
 end

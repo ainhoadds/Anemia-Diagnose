@@ -263,6 +263,210 @@ public class Parameters {
         return glucocorticoids;
     }
 
+    public void setHb(float hb) {
+        this.hb = hb;
+    }
+
+    public void setEpo(float epo) {
+        this.epo = epo;
+    }
+
+    public void setHematocrit(int hematocrit) {
+        this.hematocrit = hematocrit;
+    }
+
+    public void setPlaquets(float plaquets) {
+        this.plaquets = plaquets;
+    }
+
+    public void setAnysocytosis(float anysocytosis) {
+        this.anysocytosis = anysocytosis;
+    }
+
+    public void setRetyculocytes(float retyculocytes) {
+        this.retyculocytes = retyculocytes;
+    }
+
+    public void setLeucocytes(float leucocytes) {
+        this.leucocytes = leucocytes;
+    }
+
+    public void setRbc(float rbc) {
+        this.rbc = rbc;
+    }
+
+    public void setMcv(int mcv) {
+        this.mcv = mcv;
+    }
+
+    public void setMch(int mch) {
+        this.mch = mch;
+    }
+
+    public void setMchc(int mchc) {
+        this.mchc = mchc;
+    }
+
+    public void setFe(int fe) {
+        this.fe = fe;
+    }
+
+    public void setBilirubine(float bilirubine) {
+        this.bilirubine = bilirubine;
+    }
+
+    public void setLdh(int ldh) {
+        this.ldh = ldh;
+    }
+
+    public void setHaptoglobin(float haptoglobin) {
+        this.haptoglobin = haptoglobin;
+    }
+
+    public void setFerritin(float ferritin) {
+        this.ferritin = ferritin;
+    }
+
+    public void setB12(float b12) {
+        this.b12 = b12;
+    }
+
+    public void setFolicAcid(float folicAcid) {
+        this.folicAcid = folicAcid;
+    }
+
+    public void setGlucocorticoids(float glucocorticoids) {
+        this.glucocorticoids = glucocorticoids;
+    }
+
+    public void setHbUrine(boolean hbUrine) {
+        this.hbUrine = hbUrine;
+    }
+
+    public void setFeUrine(boolean feUrine) {
+        this.feUrine = feUrine;
+    }
+
+    public void setSkinPalenes(boolean skinPalenes) {
+        this.skinPalenes = skinPalenes;
+    }
+
+    public void setTachycardia(boolean tachycardia) {
+        this.tachycardia = tachycardia;
+    }
+
+    public void setTinnitus(boolean tinnitus) {
+        this.tinnitus = tinnitus;
+    }
+
+    public void setPalpitations(boolean palpitations) {
+        this.palpitations = palpitations;
+    }
+
+    public void setChestPain(boolean chestPain) {
+        this.chestPain = chestPain;
+    }
+
+    public void setInfarction(boolean infarction) {
+        this.infarction = infarction;
+    }
+
+    public void setDizziness(boolean dizziness) {
+        this.dizziness = dizziness;
+    }
+
+    public void setBlurredVision(boolean blurredVision) {
+        this.blurredVision = blurredVision;
+    }
+
+    public void setHeadAche(boolean headAche) {
+        this.headAche = headAche;
+    }
+
+    public void setFatigue(boolean fatigue) {
+        this.fatigue = fatigue;
+    }
+
+    public void setMusclePain(boolean musclePain) {
+        this.musclePain = musclePain;
+    }
+
+    public void setDyspnea(boolean dyspnea) {
+        this.dyspnea = dyspnea;
+    }
+
+    public void setTachypnea(boolean tachypnea) {
+        this.tachypnea = tachypnea;
+    }
+
+    public void setColdLimp(boolean coldLimp) {
+        this.coldLimp = coldLimp;
+    }
+
+    public void setInternHemorrage(boolean internHemorrage) {
+        this.internHemorrage = internHemorrage;
+    }
+
+    public void setExternHemorrage(boolean externHemorrage) {
+        this.externHemorrage = externHemorrage;
+    }
+
+    public void setNausea(boolean nausea) {
+        this.nausea = nausea;
+    }
+
+    public void setJaundice(boolean jaundice) {
+        this.jaundice = jaundice;
+    }
+
+    public void setSplenomegalia(boolean splenomegalia) {
+        this.splenomegalia = splenomegalia;
+    }
+
+    public void setCranealBallooning(boolean cranealBallooning) {
+        this.cranealBallooning = cranealBallooning;
+    }
+
+    public void setAplasticCrisis(boolean aplasticCrisis) {
+        this.aplasticCrisis = aplasticCrisis;
+    }
+
+    public void setBacterianInfection(boolean bacterianInfection) {
+        this.bacterianInfection = bacterianInfection;
+    }
+
+    public void setOsteoporosis(boolean osteoporosis) {
+        this.osteoporosis = osteoporosis;
+    }
+
+    public void setBoneDeformation(boolean boneDeformation) {
+        this.boneDeformation = boneDeformation;
+    }
+
+    public void setMaxilarBoneHyperplasia(boolean maxilarBoneHyperplasia) {
+        this.maxilarBoneHyperplasia = maxilarBoneHyperplasia;
+    }
+
+    public void setBrittleNails(boolean brittleNails) {
+        this.brittleNails = brittleNails;
+    }
+
+    public void setTongueInflamation(boolean tongueInflamation) {
+        this.tongueInflamation = tongueInflamation;
+    }
+
+    public void setDiarrhoea(boolean diarrhoea) {
+        this.diarrhoea = diarrhoea;
+    }
+
+    public void setParesthesia(boolean paresthesia) {
+        this.paresthesia = paresthesia;
+    }
+
+    public void setPetechiae(boolean petechiae) {
+        this.petechiae = petechiae;
+    }
+
     public boolean isHbUrine() {
         return hbUrine;
     }
