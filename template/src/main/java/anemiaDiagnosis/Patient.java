@@ -18,6 +18,7 @@ public class Patient {
         this.name = name;
         this.surname = surname;
         this.id_patient = id_patient;
+        parameters = new Parameters();
     }
 
     public Parameters getParameters() {

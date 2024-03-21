@@ -7,34 +7,13 @@ import java.io.IOException;
 import anemiaDiagnosis.*;
 
 public class DataReader {
-    public static void readHemogram(String fileroute, Patient patient) throws IOException {
+    public static Patient readHemogram(String fileroute, Patient patient) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(fileroute));
         String titleLine = br.readLine(); //Reads the first row (title)
         String[] title = titleLine.split(",");
         String line = br.readLine(); //Reads the second row
         String[] data = line.split(",");
-        /*float hb; //Hemoglobin
-        float epo; //Eritropoyetin
-        int hematocrit;
-        float plaquets;
-        float anysocytosis;
-        float retyculocytes;
-        float leucocytes;
-        BloodVolume bloodVolume;
-        float rbc; //Red Blood Cells
-        int mcv; //Mean Corpuscular Volume
-        int mch; //Mean Corpuscular Hemoglobin
-        int mchc; //Mean Corpuscular Hemoglobin Concentration
-        int fe; //Iron values
-        float bilirubine;
-        int ldh; //Lactate Dehydrogenase
-        float haptoglobin;
-        float ferritin;
-        float b12; //Vitamin B12
-        float folicAcid;
-        float glucocorticoids;
-        boolean hbUrine; //Amount of Hemoglobin in Urine
-        boolean feUrine; // Amount of Iron in Urine*/
+
         if (title.length != data.length){
             System.out.println("Error, CSV data is not correct");
         } else {
@@ -126,14 +105,26 @@ public class DataReader {
                         patient.getParameters().setGlucocorticoids(glucocorticoids);
                         break;
                     case "hbUrine":
-                        boolean hbUrine = Boolean.getBoolean(data[i]); //importante que el valor sea 'true' o 'false' en minúsculas, porque si no pondrá que es falso ponga lo que ponga
+                        boolean hbUrine = Boolean.parseBoolean(data[i]);
                         patient.getParameters().setHbUrine(hbUrine);
                         break;
                     case "feUrine":
-                        boolean feUrine = Boolean.getBoolean(data[i]); //Igual que en hbUrine
+                        boolean feUrine = Boolean.parseBoolean(data[i]);
                         patient.getParameters().setFeUrine(feUrine);
                 }
             }
+        }
+        return patient;
+    }
+
+    public static void main(String[] args) {
+        String route = "C:\\DSS\\Project\\Anemia-Diagnose\\template\\CSV\\example.csv";
+        Patient p = new Patient("Alejandra", "Morell", 1);
+        try {
+            Patient p2 = readHemogram(route, p);
+            System.out.println(p2.toString());
+        } catch (IOException e){
+            e.printStackTrace();
         }
     }
 }

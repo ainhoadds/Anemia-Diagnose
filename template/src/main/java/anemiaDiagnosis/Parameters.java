@@ -58,6 +58,10 @@ public class Parameters {
     private boolean paresthesia; //sensation of tingling or “pins and needles” underneath your skin
     private boolean petechiae; //pinpoint non-blanching spots in the skin
 
+    public Parameters(){
+
+    }
+
     public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, BloodVolume bloodVolume, float rbc, int mcv, int mch, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean hbUrine, boolean feUrine, boolean skinPalenes, boolean tachycardia, boolean tinnitus, boolean palpitations, boolean chestPain, boolean infarction, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean musclePain, boolean dyspnea, boolean tachypnea, boolean coldLimp, boolean internHemorrage, boolean externHemorrage, boolean nausea, boolean jaundice, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis, boolean bacterianInfection, boolean osteoporosis, boolean boneDeformation, boolean maxilarBoneHyperplasia, boolean brittleNails, boolean tongueInflamation, boolean diarrhoea, boolean paresthesia, boolean petechiae) {
         this.hb = hb;
         this.epo = epo;
