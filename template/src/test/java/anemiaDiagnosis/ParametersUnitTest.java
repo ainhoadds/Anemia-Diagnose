@@ -7,7 +7,6 @@ import org.junit.Test; //Importa la anotación Test de JUnit, que se utiliza par
 import org.slf4j.Logger; //Importa las clases Logger y LoggerFactory del paquete org.slf4j, que se utilizan para registrar mensajes de registro.
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -31,7 +30,7 @@ public class ParametersUnitTest {
             //parameter that makes rule "Anemic syndrome" trigged
             Parameters p1 = new Parameters(7,20,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
             //parameter that makes rule "Post hemorragic anemia" trigged
-            Parameters p2 = new Parameters(3,BloodVolume.DECREASED,3,300,50,true,true,true,true,true,true,true,true);
+            Parameters p2 = new Parameters(3, BloodVolume.DECREASED,3,300,50,true,true,true,true,true,true,true,true);
             //parameter that makes rule "Hemolytic anemia" trigged
 
             Parameters p3 = new Parameters(10,20,3,6,200,40,true,true,200,2,200,30,true,true,true,true,true,true);

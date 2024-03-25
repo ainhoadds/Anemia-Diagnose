@@ -1,7 +1,5 @@
 package anemiaDiagnosis;
 
-import java.util.List;
-
 /**
  * @author alberto.gildelafuent
  */

@@ -4,7 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import anemiaDiagnosis.*;
+import anemiaDiagnosis.BloodVolume;
+import anemiaDiagnosis.Patient;
 
 public class DataReader {
     public static Patient readHemogram(String fileroute, Patient patient) throws IOException {
