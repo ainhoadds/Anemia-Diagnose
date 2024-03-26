@@ -62,7 +62,12 @@ public class Parameters {
 
     }
 
-    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, BloodVolume bloodVolume, float rbc, int mcv, int mch, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean hbUrine, boolean feUrine, boolean skinPalenes, boolean tachycardia, boolean tinnitus, boolean palpitations, boolean chestPain, boolean infarction, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean musclePain, boolean dyspnea, boolean tachypnea, boolean coldLimp, boolean internHemorrage, boolean externHemorrage, boolean nausea, boolean jaundice, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis, boolean bacterianInfection, boolean osteoporosis, boolean boneDeformation, boolean maxilarBoneHyperplasia, boolean brittleNails, boolean tongueInflamation, boolean diarrhoea, boolean paresthesia, boolean petechiae) {
+
+    //to facilitate the test, i have created a constructor per rule to just stablish the parametrs that the rule depende on
+    //constuctor that creates a parameter that triggers rule 1
+
+
+    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean tachycardia, boolean tinnitus, boolean palpitations, boolean chestPain, boolean infarction, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean musclePain, boolean dyspnea, boolean tachypnea, boolean coldLimp) {
         this.hb = hb;
         this.epo = epo;
         this.hematocrit = hematocrit;
@@ -70,7 +75,69 @@ public class Parameters {
         this.anysocytosis = anysocytosis;
         this.retyculocytes = retyculocytes;
         this.leucocytes = leucocytes;
+        this.rbc = rbc;
+        this.mcv = mcv;
+        this.mchc = mchc;
+        this.fe = fe;
+        this.bilirubine = bilirubine;
+        this.ldh = ldh;
+        this.haptoglobin = haptoglobin;
+        this.ferritin = ferritin;
+        this.b12 = b12;
+        this.folicAcid = folicAcid;
+        this.glucocorticoids = glucocorticoids;
+        this.skinPalenes = skinPalenes;
+        this.tachycardia = tachycardia;
+        this.tinnitus = tinnitus;
+        this.palpitations = palpitations;
+        this.chestPain = chestPain;
+        this.infarction = infarction;
+        this.dizziness = dizziness;
+        this.blurredVision = blurredVision;
+        this.headAche = headAche;
+        this.fatigue = fatigue;
+        this.musclePain = musclePain;
+        this.dyspnea = dyspnea;
+        this.tachypnea = tachypnea;
+        this.coldLimp = coldLimp;
+    }
+    //contructor that creates a parameter that triggers rule 2
+
+
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, BloodVolume bloodVolume, int mcv, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean tachycardia, boolean dizziness, boolean fatigue, boolean dyspnea, boolean tachypnea, boolean internHemorrage, boolean externHemorrage) {
+        this.epo = epo;
+        this.hematocrit = hematocrit;
+        this.plaquets = plaquets;
+        this.anysocytosis = anysocytosis;
+        this.retyculocytes = retyculocytes;
+        this.leucocytes = leucocytes;
         this.bloodVolume = bloodVolume;
+        this.mcv = mcv;
+        this.bilirubine = bilirubine;
+        this.ldh = ldh;
+        this.haptoglobin = haptoglobin;
+        this.ferritin = ferritin;
+        this.b12 = b12;
+        this.folicAcid = folicAcid;
+        this.glucocorticoids = glucocorticoids;
+        this.skinPalenes = skinPalenes;
+        this.tachycardia = tachycardia;
+        this.dizziness = dizziness;
+        this.fatigue = fatigue;
+        this.dyspnea = dyspnea;
+        this.tachypnea = tachypnea;
+        this.internHemorrage = internHemorrage;
+        this.externHemorrage = externHemorrage;
+    }
+
+    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mch, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean hbUrine, boolean feUrine, boolean skinPalenes, boolean fatigue, boolean jaundice, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis) {
+        this.hb = hb;
+        this.epo = epo;
+        this.hematocrit = hematocrit;
+        this.plaquets = plaquets;
+        this.anysocytosis = anysocytosis;
+        this.retyculocytes = retyculocytes;
+        this.leucocytes = leucocytes;
         this.rbc = rbc;
         this.mcv = mcv;
         this.mch = mch;
@@ -86,23 +153,30 @@ public class Parameters {
         this.hbUrine = hbUrine;
         this.feUrine = feUrine;
         this.skinPalenes = skinPalenes;
-        this.tachycardia = tachycardia;
-        this.tinnitus = tinnitus;
-        this.palpitations = palpitations;
-        this.chestPain = chestPain;
-        this.infarction = infarction;
-        this.dizziness = dizziness;
-        this.blurredVision = blurredVision;
-        this.headAche = headAche;
         this.fatigue = fatigue;
-        this.musclePain = musclePain;
-        this.dyspnea = dyspnea;
-        this.tachypnea = tachypnea;
-        this.coldLimp = coldLimp;
-        this.internHemorrage = internHemorrage;
-        this.externHemorrage = externHemorrage;
-        this.nausea = nausea;
         this.jaundice = jaundice;
+        this.splenomegalia = splenomegalia;
+        this.cranealBallooning = cranealBallooning;
+        this.aplasticCrisis = aplasticCrisis;
+    }
+
+    public Parameters(int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, float bilirrubine, int mcv, int mchc, int fe, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, int ldh, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis, boolean bacterianInfection, boolean osteoporosis, boolean boneDeformation, boolean maxilarBoneHyperplasia) {
+        this.hematocrit = hematocrit;
+        this.plaquets = plaquets;
+        this.anysocytosis = anysocytosis;
+        this.retyculocytes = retyculocytes;
+        this.leucocytes = leucocytes;
+        this.rbc = rbc;
+        this.bilirubine = bilirrubine;
+        this.mcv = mcv;
+        this.mchc = mchc;
+        this.fe = fe;
+        this.haptoglobin = haptoglobin;
+        this.ferritin = ferritin;
+        this.b12 = b12;
+        this.folicAcid = folicAcid;
+        this.glucocorticoids = glucocorticoids;
+        this.ldh = ldh;
         this.splenomegalia = splenomegalia;
         this.cranealBallooning = cranealBallooning;
         this.aplasticCrisis = aplasticCrisis;
@@ -110,70 +184,135 @@ public class Parameters {
         this.osteoporosis = osteoporosis;
         this.boneDeformation = boneDeformation;
         this.maxilarBoneHyperplasia = maxilarBoneHyperplasia;
+    }
+
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean palpitations, boolean headAche, boolean fatigue, boolean dyspnea, boolean coldLimp, boolean nausea, boolean brittleNails, boolean tongueInflamation) {
+        this.epo = epo;
+        this.hematocrit = hematocrit;
+        this.plaquets = plaquets;
+        this.anysocytosis = anysocytosis;
+        this.retyculocytes = retyculocytes;
+        this.leucocytes = leucocytes;
+        this.rbc = rbc;
+        this.mcv = mcv;
+        this.mchc = mchc;
+        this.fe = fe;
+        this.bilirubine = bilirubine;
+        this.ldh = ldh;
+        this.haptoglobin = haptoglobin;
+        this.ferritin = ferritin;
+        this.b12 = b12;
+        this.folicAcid = folicAcid;
+        this.glucocorticoids = glucocorticoids;
+        this.skinPalenes = skinPalenes;
+        this.palpitations = palpitations;
+        this.headAche = headAche;
+        this.fatigue = fatigue;
+        this.dyspnea = dyspnea;
+        this.coldLimp = coldLimp;
+        this.nausea = nausea;
         this.brittleNails = brittleNails;
         this.tongueInflamation = tongueInflamation;
-        this.diarrhoea = diarrhoea;
-        this.paresthesia = paresthesia;
+    }
+
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float glucocorticoids, boolean skinPalenes, boolean fatigue, boolean internHemorrage, boolean externHemorrage, boolean petechiae) {
+        this.epo = epo;
+        this.hematocrit = hematocrit;
+        this.plaquets = plaquets;
+        this.anysocytosis = anysocytosis;
+        this.retyculocytes = retyculocytes;
+        this.leucocytes = leucocytes;
+        this.rbc = rbc;
+        this.mcv = mcv;
+        this.mchc = mchc;
+        this.fe = fe;
+        this.bilirubine = bilirubine;
+        this.ldh = ldh;
+        this.haptoglobin = haptoglobin;
+        this.ferritin = ferritin;
+        this.b12 = b12;
+        this.glucocorticoids = glucocorticoids;
+        this.skinPalenes = skinPalenes;
+        this.fatigue = fatigue;
+        this.internHemorrage = internHemorrage;
+        this.externHemorrage = externHemorrage;
         this.petechiae = petechiae;
     }
 
-    //to facilitate the test, i have created a constructor per rule to just stablish the parametrs that the rule depende on
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean headAche, boolean fatigue, boolean dyspnea) {
+        this.epo = epo;
+        this.hematocrit = hematocrit;
+        this.plaquets = plaquets;
+        this.anysocytosis = anysocytosis;
+        this.retyculocytes = retyculocytes;
+        this.leucocytes = leucocytes;
+        this.mcv = mcv;
+        this.mchc = mchc;
+        this.fe = fe;
+        this.bilirubine = bilirubine;
+        this.ldh = ldh;
+        this.haptoglobin = haptoglobin;
+        this.ferritin = ferritin;
+        this.b12 = b12;
+        this.folicAcid = folicAcid;
+        this.glucocorticoids = glucocorticoids;
+        this.skinPalenes = skinPalenes;
+        this.headAche = headAche;
+        this.fatigue = fatigue;
+        this.dyspnea = dyspnea;
+    }
 
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean dizziness, boolean headAche, boolean fatigue, boolean dyspnea, boolean brittleNails) {
+        this.epo = epo;
+        this.hematocrit = hematocrit;
+        this.plaquets = plaquets;
+        this.anysocytosis = anysocytosis;
+        this.retyculocytes = retyculocytes;
+        this.leucocytes = leucocytes;
+        this.rbc = rbc;
+        this.mcv = mcv;
+        this.mchc = mchc;
+        this.fe = fe;
+        this.bilirubine = bilirubine;
+        this.ldh = ldh;
+        this.haptoglobin = haptoglobin;
+        this.ferritin = ferritin;
+        this.b12 = b12;
+        this.folicAcid = folicAcid;
+        this.glucocorticoids = glucocorticoids;
+        this.skinPalenes = skinPalenes;
+        this.dizziness = dizziness;
+        this.headAche = headAche;
+        this.fatigue = fatigue;
+        this.dyspnea = dyspnea;
+        this.brittleNails = brittleNails;
+    }
 
-    public Parameters(float hb, float epo, boolean skinPalenes, boolean tachycardia, boolean tinnitus, boolean palpitations, boolean chestPain, boolean infarction, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean musclePain, boolean dyspnea, boolean tachypnea, boolean coldLimp) {
+    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, BloodVolume bloodVolume, int mcv, float rbc, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean dyspnea) {
         this.hb = hb;
         this.epo = epo;
-        this.skinPalenes = skinPalenes;
-        this.tachycardia = tachycardia;
-        this.tinnitus = tinnitus;
-        this.palpitations = palpitations;
-        this.chestPain = chestPain;
-        this.infarction = infarction;
+        this.hematocrit = hematocrit;
+        this.plaquets = plaquets;
+        this.anysocytosis = anysocytosis;
+        this.retyculocytes = retyculocytes;
+        this.leucocytes = leucocytes;
+        this.bloodVolume = bloodVolume;
+        this.mcv = mcv;
+        this.rbc = rbc;
+        this.mchc = mchc;
+        this.fe = fe;
+        this.bilirubine = bilirubine;
+        this.ldh = ldh;
+        this.haptoglobin = haptoglobin;
+        this.ferritin = ferritin;
+        this.b12 = b12;
+        this.folicAcid = folicAcid;
+        this.glucocorticoids = glucocorticoids;
         this.dizziness = dizziness;
         this.blurredVision = blurredVision;
         this.headAche = headAche;
         this.fatigue = fatigue;
-        this.musclePain = musclePain;
         this.dyspnea = dyspnea;
-        this.tachypnea = tachypnea;
-        this.coldLimp = coldLimp;
-    }
-
-    public Parameters(float retyculocytes, BloodVolume bloodVolume, float rbc, int mchc, int fe, boolean skinPalenes, boolean tachycardia, boolean dizziness, boolean fatigue, boolean dyspnea, boolean tachypnea, boolean internHemorrage, boolean externHemorrage) {
-        this.retyculocytes = retyculocytes;
-        this.bloodVolume = bloodVolume;
-        this.rbc = rbc;
-        this.mchc = mchc;
-        this.fe = fe;
-        this.skinPalenes = skinPalenes;
-        this.tachycardia = tachycardia;
-        this.dizziness = dizziness;
-        this.fatigue = fatigue;
-        this.dyspnea = dyspnea;
-        this.tachypnea = tachypnea;
-        this.internHemorrage = internHemorrage;
-        this.externHemorrage = externHemorrage;
-    }
-
-    public Parameters(float hb, float epo, float retyculocytes, float rbc, int mcv, int mch, boolean hbUrine,boolean feUrine,int fe, float bilirubine, int ldh, float haptoglobin, boolean skinPalenes, boolean fatigue, boolean jaundice, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis) {
-        this.hb = hb;
-        this.epo = epo;
-        this.retyculocytes = retyculocytes;
-        this.rbc = rbc;
-        this.mcv = mcv;
-        this.mch = mch;
-        this.haptoglobin = haptoglobin;
-        this.hbUrine = hbUrine;
-        this.fe = fe;
-        this.bilirubine = bilirubine;
-        this.ldh = ldh;
-        this.feUrine = feUrine;
-        this.skinPalenes = skinPalenes;
-        this.fatigue = fatigue;
-        this.jaundice = jaundice;
-        this.splenomegalia = splenomegalia;
-        this.cranealBallooning = cranealBallooning;
-        this.aplasticCrisis = aplasticCrisis;
     }
 
     public void setAnemia(Anemia anemia) {
@@ -603,7 +742,8 @@ public class Parameters {
     @Override
     public String toString() {
         return "Parameters{" +
-                "hb=" + hb +
+                "anemia: " + anemia +
+                ", hb=" + hb +
                 ", epo=" + epo +
                 ", hematocrit=" + hematocrit +
                 ", plaquets=" + plaquets +

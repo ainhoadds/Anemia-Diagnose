@@ -22,16 +22,12 @@ unit ParametersUnit;
 rule "AnemicSyndrome"
 when
     $parameters : /parameters[hb < 8 && hb !=0, epo > 18.5, hematocrit < 53 , plaquets > 7.4, anysocytosis > 11.5 ,
-    retyculocytes < 2.5, leucocytes > 4.5, bloodVolume == null, rbc > 4.5 && rbc < 5.3, mcv > 80 && mcv < 100,
-    mchc > 310 && mchc < 360, hbUrine == false, feUrine == false, fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0,
+    retyculocytes < 2.5, leucocytes > 4.5, rbc > 4.5 && rbc < 5.3, mcv > 80 && mcv < 100,
+    mchc > 310 && mchc < 360, fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0,
     ldh < 150 && ldh >= 0, haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25 ,
     skinPalenes == true, tachycardia == true, tinnitus == true,
     palpitations == true, chestPain == true, infarction == true, dizziness == true, blurredVision == true,
-    headAche == true, fatigue == true, musclePain == true, dyspnea == true, tachypnea == true, coldLimp == true,
-    internHemorrage == false, externHemorrage == false, nausea == false, jaundice == false, splenomegalia == false,
-    cranealBallooning == false, aplasticCrisis == false,bacterianInfection == false, osteoporosis == false,
-    boneDeformation == false, maxilarBoneHyperplasia == false, brittleNails == false, tongueInflamation == false,
-    diarrhoea == false, paresthesia == false, petechiae == false]
+    headAche == true, fatigue == true, musclePain == true, dyspnea == true, tachypnea == true, coldLimp == true]
 then
     // IF I WANT TO DEBUG THE CODE, I CAN PRINT HERE WHATEVER I WANT System.out.println( op );
     //System.out.println( $patient + " has Anemic Syndrome. ");
@@ -45,15 +41,10 @@ end
 rule "PosthemorrhagicAnemia"
 when
     $parameters : /parameters[epo > 2.6 && epo < 18.5, hematocrit < 53 , plaquets > 7.4, anysocytosis > 11.5 ,leucocytes > 4.5,
-    mcv > 80 && mcv < 100, hbUrine == false, feUrine == false, bilirubine < 1.0 && bilirubine, ldh < 150 && ldh >= 0,
-    haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25, retyculocytes > 2.5 &&
-    retyculocytes != 0, bloodVolume == BloodVolume.DECREASED, rbc < 4.5, mchc < 310, fe < 60, skinPalenes == true,
-    tachycardia == true, tinnitus == false , palpitations == false, chestPain == false, infarction == false,
-    dizziness == true, blurredVision == false, headAche == false, fatigue == true, dyspnea == true, tachypnea == true,
-    coldLimp == false, internHemorrage == true, externHemorrage == true, nausea == false, jaundice == false,
-    splenomegalia == false, cranealBallooning == false, aplasticCrisis == false,bacterianInfection == false,
-    osteoporosis == false, boneDeformation == false, maxilarBoneHyperplasia == false, brittleNails == false,
-    tongueInflamation == false, diarrhoea == false, paresthesia == false, petechiae == false]
+    mcv > 80 && mcv < 100, bilirubine >= 0 && bilirubine < 1, ldh < 150 && ldh >= 0,
+    haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25, retyculocytes > 2.5 && retyculocytes != 0, bloodVolume == BloodVolume.DECREASED, rbc < 4.5, mchc < 310, fe < 60, skinPalenes == true,
+    tachycardia == true, dizziness == true, fatigue == true, dyspnea == true, tachypnea == true,
+    internHemorrage == true, externHemorrage == true]
 then
     modify ($parameters) { setAnemia(Anemia.POSTHEMORRAGIC_ANEMIA)}
     System.out.println($parameters.getAnemia());
@@ -64,15 +55,10 @@ end
 
 rule "HemolyticAnemia"
 when
-    $parameters : /parameters[hb > 8 && hb < 13.5 && hb != 0, epo > 18.5, hematocrit < 53 , plaquets > 7.4,
-    anysocytosis > 11.5 , leucocytes > 4.5, bloodVolume == null, mcv > 80 && mcv < 100, mchc > 310 && mchc < 360,
-    ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25 , retyculocytes > 2.5, rbc > 5.9, mcv > 100, mch > 32,
-    hbUrine == true, feUrine == true, fe > 170, bilirubine > 1.0, ldh >150, haptoglobin < 41, skinPalenes == true,
-    tachycardia == false, tinnitus == false , palpitations == false, chestPain == false, infarction == false,
-    dizziness == false, blurredVision == false, headAche == false, fatigue == true, musclePain == false ,dyspnea == false, tachypnea == false,
-    coldLimp == false, internHemorrage == false, externHemorrage == false, nausea == false,bacterianInfection == false,
-    osteoporosis == false, boneDeformation == false, maxilarBoneHyperplasia == false, brittleNails == false,
-    tongueInflamation == false, diarrhoea == false, paresthesia == false, petechiae == false,
+    $parameters : /parameters[hb > 8 && hb < 13.5, epo > 18.5, hematocrit < 53 , plaquets > 7.4,
+    anysocytosis > 11.5 , leucocytes > 4.5,mcv > 80 && mcv < 100, mchc > 310 && mchc < 360,
+    ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25 , retyculocytes > 2.5, rbc > 5.9, mch > 32,
+    hbUrine == true, feUrine == true, fe > 170, bilirubine >= 0 && bilirubine < 1, ldh >150, haptoglobin < 41, skinPalenes == true,
     fatigue == true, jaundice == true, splenomegalia == true, cranealBallooning == true, aplasticCrisis == true]
 then
     modify ($parameters) { setAnemia(Anemia.HEMOLYTIC_ANEMIA)}
@@ -82,15 +68,11 @@ end
 
 rule "InheritedSpherocytosis"
 when
-    $parameters : /parameters[hematocrit < 53 , plaquets > 7.4, anysocytosis > 11.5 , leucocytes > 4.5, bloodVolume == null,
-     rbc > 4.5 && rbc < 5.3, hbUrine == false, feUrine == false, fe > 60 && fe < 170, haptoglobin > 41, ferritin > 12,
+    $parameters : /parameters[hematocrit < 53 , plaquets > 7.4, anysocytosis > 11.5 , leucocytes > 4.5,
+     rbc > 4.5 && rbc < 5.3, fe > 60 && fe < 170, haptoglobin > 41, ferritin > 12,
      b12 > 200, folicAcid > 2.7, glucocorticoids < 25 , retyculocytes > 2.5 && retyculocytes != 0, mcv < 80, mchc < 310,
-     bilirubine > 1.0, ldh > 150, haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25 ,
-     skinPalenes == false, tachycardia == false, tinnitus == false , palpitations == false, chestPain == false, infarction == false,
-     musclePain == false ,dyspnea == false, tachypnea == false, coldLimp == false, internHemorrage == false,
-     externHemorrage == false, nausea == false, brittleNails == false, tongueInflamation == false,
-     diarrhoea == false, paresthesia == false, petechiae == false, dizziness == false, blurredVision == false,
-     headAche == false, fatigue == false, jaundice == true, splenomegalia == true, cranealBallooning == true,
+     bilirubine >= 0 && bilirubine < 1, ldh > 150, folicAcid > 2.7,
+     splenomegalia == true, cranealBallooning == true,
      aplasticCrisis == true, bacterianInfection == true, osteoporosis == true, boneDeformation == true, maxilarBoneHyperplasia == true]
 then
     modify ($parameters) { setAnemia(Anemia.HEREDITARY_SPHEROCYTOSIS)}
@@ -100,18 +82,13 @@ end
 
 rule "Thalassemia"
 when
-    $parameters : /parameters[mcv < 80 && mcv != 0, mchc > 360, skinPalenes == true, palpitations == true, headAche == true,
-    fatigue == true, dyspnea == true, coldLimp == true, nausea == true, brittleNails == true, tongueInflamation == true,
+    $parameters : /parameters[mcv < 80 && mcv != 0, mchc > 360,
     epo > 2.6 && epo < 18.5, hematocrit < 53 ,  plaquets > 7.4, anysocytosis > 11.5 ,
-    retyculocytes < 2.5, leucocytes > 4.5, bloodVolume == null,  rbc > 4.5 && rbc < 5.3,
-    hbUrine == false, feUrine == false, fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0,
+    retyculocytes < 2.5, leucocytes > 4.5,rbc > 4.5 && rbc < 5.3,
+    fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0,
     ldh < 150 && ldh >= 0, haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25 ,
-    tachycardia == false, tinnitus == false , chestPain == false, infarction == false,
-    dizziness == false, blurredVision == false, musclePain == false, tachypnea == false,
-    internHemorrage == false, externHemorrage == false, bacterianInfection == false,
-    osteoporosis == false, boneDeformation == false, maxilarBoneHyperplasia == false,
-    diarrhoea == false, paresthesia == false, petechiae == false,
-    jaundice == false, splenomegalia == false, cranealBallooning == false, aplasticCrisis == false]
+    skinPalenes == true, palpitations == true, headAche == true,
+    fatigue == true, dyspnea == true, coldLimp == true, nausea == true, brittleNails == true, tongueInflamation == true]
 then
 
     modify ($parameters) { setAnemia(Anemia.THALASSEMIA)}
@@ -121,17 +98,11 @@ end
 
 rule "MegaloblasticAnemia"
 when
-    $parameters : /parameters[anysocytosis < 11.5 && anysocytosis != 0, mcv > 100, mchc > 360, b12 < 200, folicAcid < 2.7, skinPalenes == true,
-    fatigue == true, internHemorrage == true, externHemorrage == true, petechiae == true,
-    epo > 2.6 && epo < 18.5, hematocrit < 53 ,  plaquets > 7.4, retyculocytes < 2.5, leucocytes > 4.5, bloodVolume == null,  rbc > 4.5 && rbc < 5.3,
-    hbUrine == false, feUrine == false, fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0,
-    ldh < 150 && ldh >= 0, haptoglobin > 41, ferritin > 12, glucocorticoids < 25 ,
-    tachycardia == false, tinnitus == false , palpitations == false, chestPain == false, infarction == false,
-    dizziness == false, blurredVision == false, headAche == false, musclePain == false ,dyspnea == false,
-    tachypnea == false, coldLimp == false, nausea == false,bacterianInfection == false, osteoporosis == false,
-    boneDeformation == false, maxilarBoneHyperplasia == false, brittleNails == false, tongueInflamation == false,
-    diarrhoea == false, paresthesia == false, jaundice == false, splenomegalia == false, cranealBallooning == false,
-    aplasticCrisis == false]
+    $parameters : /parameters[anysocytosis < 11.5 && anysocytosis != 0, mcv > 100, mchc > 360, b12 < 200, folicAcid < 2.7,
+    epo > 2.6 && epo < 18.5, hematocrit < 53 ,  plaquets > 7.4, retyculocytes < 2.5, leucocytes > 4.5, rbc > 4.5 && rbc < 5.3,
+    fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0,
+    ldh < 150 && ldh >= 0, haptoglobin > 41, ferritin > 12, glucocorticoids < 25, skinPalenes == true,
+    fatigue == true, internHemorrage == true, externHemorrage == true, petechiae == true]
 then
 
     modify ($parameters) { setAnemia(Anemia.MEGALOBLASTIC_ANEMIA)}
@@ -141,16 +112,11 @@ end
 
 rule "AplasticAnemia"
 when
-    $parameters : /parameters[plaquets < 7.4 && plaquets !=0, leucocytes< 4.5, rbc < 4.5, skinPalenes == true, headAche == true,
-    fatigue == true, dyspnea == true, epo > 2.6 && epo < 18.5, hematocrit < 53 , anysocytosis > 11.5 , retyculocytes < 2.5,
-    bloodVolume == null, mcv > 80 && mcv < 100, mchc > 310 && mchc < 360,  hbUrine == false, feUrine == false,
+    $parameters : /parameters[plaquets < 7.4 && plaquets !=0, leucocytes< 4.5, rbc < 4.5, epo > 2.6 && epo < 18.5, hematocrit < 53 , anysocytosis > 11.5 , retyculocytes < 2.5,
+    mcv > 80 && mcv < 100, mchc > 310 && mchc < 360,
     fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0, ldh < 150 && ldh >= 0, haptoglobin > 41, ferritin > 12,
-    b12 > 200, folicAcid > 2.7, glucocorticoids < 25 , tachycardia == false, tinnitus == false , palpitations == false,
-    chestPain == false, infarction == false, dizziness == false, blurredVision == false, musclePain == false ,
-    tachypnea == false, coldLimp == false, internHemorrage == false, externHemorrage == false, nausea == false,
-    bacterianInfection == false, osteoporosis == false, boneDeformation == false, maxilarBoneHyperplasia == false,
-    brittleNails == false, tongueInflamation == false, diarrhoea == false, paresthesia == false, petechiae == false,
-    jaundice == false, splenomegalia == false, cranealBallooning == false, aplasticCrisis == false]
+    b12 > 200, folicAcid > 2.7, glucocorticoids < 25, skinPalenes == true, headAche == true,
+    fatigue == true, dyspnea == true]
 then
     modify ($parameters) { setAnemia(Anemia.APLASTIC_ANEMIA)}
     System.out.println($parameters.getAnemia());
@@ -158,16 +124,11 @@ end
 
 rule "ChronicAnemia"
 when
-    $parameters : /parameters[epo < 2.6 && epo != 0, rbc > 5.9 ,mcv < 80, dizziness == true, dyspnea == true,
-    brittleNails == true , headAche == true , dyspnea == true ,skinPalenes == true, fatigue == true, hematocrit < 53 ,
-    plaquets > 7.4, anysocytosis > 11.5 , retyculocytes < 2.5, leucocytes > 4.5, bloodVolume == null, mchc > 310 && mchc < 360,
-    hbUrine == false, feUrine == false, fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0, ldh < 150 && ldh >= 0,
-    haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25, tachycardia == false, tinnitus == false,
-    palpitations == false, chestPain == false, infarction == false, blurredVision == false, musclePain == false,
-    tachypnea == false, coldLimp == false, internHemorrage == false, externHemorrage == false, nausea == false,
-    bacterianInfection == false, osteoporosis == false, boneDeformation == false, maxilarBoneHyperplasia == false,
-    tongueInflamation == false, diarrhoea == false, paresthesia == false, petechiae == false, jaundice == false,
-    splenomegalia == false, cranealBallooning == false, aplasticCrisis == false]
+    $parameters : /parameters[epo < 2.6 && epo != 0, rbc > 5.9 ,mcv < 80, hematocrit < 53 ,
+    plaquets > 7.4, anysocytosis > 11.5 , retyculocytes < 2.5, leucocytes > 4.5, mchc > 310 && mchc < 360,
+    fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0, ldh < 150 && ldh >= 0,
+    haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7, glucocorticoids < 25,dizziness == true,
+    brittleNails == true , headAche == true , dyspnea == true ,skinPalenes == true, fatigue == true]
 then
 
     modify ($parameters) { setAnemia(Anemia.CHRONIC_ANEMIA)}
@@ -178,16 +139,11 @@ end
 rule "Policythemia"
 when
     $parameters : /parameters[hb > 17.5 && hb != 0, epo > 18.5, hematocrit > 53, plaquets > 10, leucocytes < 4.5 ,
-    bloodVolume == BloodVolume.INCREASED, mcv > 100 ,glucocorticoids > 25, dizziness == true, blurredVision == true,
-    headAche == true, fatigue == true, dyspnea == true, anysocytosis > 11.5, retyculocytes < 2.5, rbc > 4.5 && rbc < 5.3,
-    mchc > 310 && mchc < 360,  hbUrine == false, feUrine == false, fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0,
-    ldh < 150 && ldh >= 0, haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7, skinPalenes == false,
-    tachycardia == false, tinnitus == false , palpitations == false, chestPain == false, infarction == false,
-    musclePain == false ,tachypnea == false, coldLimp == false, internHemorrage == false, externHemorrage == false,
-    nausea == false,bacterianInfection == false, osteoporosis == false, boneDeformation == false,
-    maxilarBoneHyperplasia == false, brittleNails == false, tongueInflamation == false, diarrhoea == false,
-    paresthesia == false, petechiae == false, fatigue == false, jaundice == false, splenomegalia == false,
-    cranealBallooning == false, aplasticCrisis == false]
+    bloodVolume == BloodVolume.INCREASED, mcv > 100 ,glucocorticoids > 25,  anysocytosis > 11.5, retyculocytes < 2.5, rbc > 4.5 && rbc < 5.3,
+    mchc > 310 && mchc < 360, fe > 60 && fe < 170, bilirubine < 1.0 && bilirubine >= 0,
+    ldh < 150 && ldh >= 0, haptoglobin > 41, ferritin > 12, b12 > 200, folicAcid > 2.7,
+    dizziness == true, blurredVision == true,
+    headAche == true, fatigue == true, dyspnea == true]
 
 then
     modify ($parameters) { setAnemia(Anemia.POLYCYTHEMIA)}
@@ -195,5 +151,5 @@ then
 end
 
 query Diagnose
-    $parameters : /parameters[ anemia == Anemia.HEMOLYTIC_ANEMIA] //en la consutla se busca los parametros cuya hemoglobina este por encima de 18.5
+    $parameters : /parameters[ anemia == Anemia.POLYCYTHEMIA] //en la consutla se busca los parametros cuya hemoglobina este por encima de 18.5
 end
