@@ -28,7 +28,7 @@ public class ParametersUnitTest {
             LOG.info("Insert data"); //Registra un mensaje de información indicando que se están insertando datos.
 
             //parameter that makes rule "Anemic syndrome" trigged
-            Parameters p1 = new Parameters(7,20,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
+            Parameters p1 = new Parameters(7,20, true,true,true,true,true,true,true,true,true,true,true,true,true,true);
             //parameter that makes rule "Post hemorragic anemia" trigged
             Parameters p2 = new Parameters(3, BloodVolume.DECREASED,3,300,50,true,true,true,true,true,true,true,true);
             //parameter that makes rule "Hemolytic anemia" trigged
