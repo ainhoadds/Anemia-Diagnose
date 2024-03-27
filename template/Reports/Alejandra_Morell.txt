@@ -1,0 +1,7 @@
+
+Patient: Alejandra Morell
+
+  Id: 1
+
+  Parameters: Parameters{anemia: ANEMIC_SYNDROME
+hb=7.4, epo=20.4, hematocrit=45, plaquets=27.5, anysocytosis=14.6, retyculocytes=1.7, leucocytes=14.2, bloodVolume=INCREASED, rbc=5.1, mcv=95, mch=14, mchc=350, fe=100, bilirubine=0.5, ldh=100, haptoglobin=52.3, ferritin=14.32, b12=300.0, folicAcid=11.21, glucocorticoids=14.44, hbUrine=false, feUrine=false, skinPalenes=true, tachycardia=true, tinnitus=true, palpitations=true, chestPain=true, infarction=true, dizziness=true, blurredVision=true, headAche=true, fatigue=true, musclePain=true, dyspnea=true, tachypnea=true, coldLimp=true, internHemorrage=false, externHemorrage=false, nausea=false, jaundice=false, splenomegalia=false, cranealBallooning=false, aplasticCrisis=false, bacterianInfection=false, osteoporosis=false, boneDeformation=false, maxilarBoneHyperplasia=false, brittleNails=false, tongueInflamation=false, diarrhoea=false, paresthesia=false, petechiae=false}
