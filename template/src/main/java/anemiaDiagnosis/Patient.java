@@ -59,8 +59,8 @@ public class Patient {
         pw.println("\nId: " +id_patient);
         pw.println("\nParameters: " + parameters.toString());
         pw.close();
-
         return file;
+
     }
 
 

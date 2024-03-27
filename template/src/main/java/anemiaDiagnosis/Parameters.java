@@ -740,7 +740,10 @@ public class Parameters {
         return petechiae;
     }
 
-    public static void setParameters(Patient p){
+    public static void setParameters(Patient p) throws NullPointerException{
+        if (p == null){
+            throw new NullPointerException();
+        }
         Utilities.showSignsAndSymptons();
         System.out.println("Introduce the number(s) of the symptoms that the patient presents: ");
         System.out.println(" Press 0 to exit: ");

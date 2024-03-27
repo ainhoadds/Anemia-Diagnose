@@ -3,9 +3,7 @@ package ui;
 
 import anemiaDiagnosis.Patient;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.*;
 
 public abstract class Utilities {
     private static InputStreamReader isr = new InputStreamReader(System.in);
@@ -54,6 +52,24 @@ public abstract class Utilities {
             return new Patient(name,surname,id);
         }
 
+    }
+    public static void showReport(File report) {
+
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(report));
+            String line;
+            System.out.println("\nPatient file content: (" + report.getName() + ")");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(" ERROR: File under " + report.getName() + " not found.");
+        } catch (IOException e) {
+            System.out.println(" ERROR: Unable to read file correcly.");
+        }
     }
     public static void showSignsAndSymptons() {
         System.out.println("\nAnemic signs and symptons: "

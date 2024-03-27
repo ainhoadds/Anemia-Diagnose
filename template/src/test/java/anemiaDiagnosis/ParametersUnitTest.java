@@ -30,10 +30,8 @@ public class ParametersUnitTest {
             Parameters p1 = new Parameters(7.0f, 20.0f, 52, 8.1f, 12.0f, 2.4f, 5.0f, 5.0f, 90, 330, 100, 0.5f, 100, 50.5f, 20.5f, 250, 3.0f, 20.0f, true, true, true, true, true, true, true, true, true, true, true, true, true, true);
             //parameter that makes rule "Post hemorragic anemia" trigged
             Parameters p2 = new Parameters(15.0f, 50, 8.1f, 12.1f, 2.6f, 5.1f, BloodVolume.DECREASED, 90, 0.5f, 100, 50.5f, 20.5f, 300, 3.0f, 20.0f, true, true, true, true, true, true, true, true);
-            //parameter that makes rule "Hemolytic anemia" trigged
-
+            //parameter that makes rule "Hemolytic anemia" trigged"
             Parameters p3 = new Parameters(9.0f, 20.0f, 52, 8.1f, 12.1f, 3.0f, 5.6f, 6.0f, 90, 33, 340, 180, 0.5f, 160, 40.0f, 20.5f, 250, 3.0f, 20.0f, true, true, true, true, true, true, true, true);
-            //Agrega las operaciones creadas anteriormente a parametersUnit.
             Parameters p4 = new Parameters(52, 8.1f, 12.1f, 5.0f, 5.6f, 5.0f,0.6f, 79, 309, 100, 42.0f, 20.5f, 250, 3.0f, 20.0f,200, true, true, true, true, true, true, true);
             Parameters p5 = new Parameters(17.0f, 52, 8.1f, 12.1f, 2.0f, 5.6f, 5.0f, 79, 409, 100, 0.5f, 140, 43.0f, 20.5f, 250, 3.0f, 20.0f, true, true, true, true, true, true, true, true, true);
             Parameters p6 = new Parameters(3.0f, 52, 8.5f, 11.0f, 2.0f, 5.6f, 5.0f, 110, 370, 80, 0.5f, 100, 45.0f, 20.5f, 150, 20.0f, true, true, true, true, true);

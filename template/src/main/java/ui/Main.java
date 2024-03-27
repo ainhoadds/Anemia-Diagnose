@@ -16,12 +16,15 @@ import java.lang.reflect.Parameter;
 public class Main {
     private static Patient patient;
     private static Parameters parameters;
+    private static File finalReport;
+
 
 
     public static void main(String[] args) {
 
         patient = null;
         parameters = null;
+        finalReport = null;
 
         while (true) {
 
@@ -36,38 +39,44 @@ public class Main {
                 }
                 case 2: {
                     System.out.println("Load patient's hemogram");
-                    String route = "CSV\\"+patient.getName()+"_"+patient.getSurname()+".csv";
-                    try {
-                        DataReader.readHemogram(route,patient);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    System.out.println(patient.getParameters());
-                    break;
+                        try {
+                            String route = "CSV\\" + patient.getName() + "_" + patient.getSurname() + ".csv";
+                            DataReader.readHemogram(route, patient);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }catch (NullPointerException n){
+                            System.out.println("ERROR: you must first register patient's data");
+                        }
+                        System.out.println(patient.getParameters());
+                        break;
 
                 }
 
                 case 3:{
                     System.out.println("Introduce visible signs and symptons");
-                    Utilities.showSignsAndSymptons();
-                    Parameters.setParameters(patient);
-                    parameters = patient.getParameters();
+                    try {
+                        Parameters.setParameters(patient);
+                        parameters = patient.getParameters();
+                    }catch(NullPointerException np){
+                        System.out.println("ERROR: you must first register patient's data");
+                    }
                     break;
                 }
+
                 case 4:{
                     System.out.println("Perform the anemia diagnosis supported by a DSS");
 
                     ParametersUnit parametersUnit = new ParametersUnit();
                     RuleUnitInstance<ParametersUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(parametersUnit);
-                    try{
+                    try {
                         parametersUnit.getParameters().add(parameters);
-
                         instance.fire();
-                        System.out.println(parameters);
+
 
                     }finally{
                         instance.close();
                     }
+
                     break;
 
                 }
@@ -75,11 +84,12 @@ public class Main {
                 case 5: {
                     System.out.println("Patient's diagnosis report");
                     try{
-                        patient.storeFinalReport();
-                    } catch (FileNotFoundException e) {
-                        System.out.println(" ERROR: No data has been recorded yet.");
+                        finalReport = patient.storeFinalReport();
+                        Utilities.showReport(finalReport);
                     } catch(NullPointerException e) {
                         System.out.println(" ERROR: You must first register your patient information.");
+                    }catch (FileNotFoundException fn) {
+                        System.out.println();
                     }
                     break;
                 }
