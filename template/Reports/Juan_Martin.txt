@@ -1,0 +1,7 @@
+
+Patient: Juan Martin
+
+Id: 2
+
+Parameters: Parameters{anemia: POSTHEMORRAGIC_ANEMIA
+hb=56.0, epo=15.0, hematocrit=50, plaquets=8.1, anysocytosis=12.1, retyculocytes=2.6, leucocytes=5.1, bloodVolume=DECREASED, rbc=3.7, mcv=90, mch=300, mchc=280, fe=50, bilirubine=0.5, ldh=100, haptoglobin=50.5, ferritin=20.5, b12=300.0, folicAcid=3.0, glucocorticoids=20.0, hbUrine=false, feUrine=false, skinPalenes=true, tachycardia=true, tinnitus=false, palpitations=false, chestPain=false, infarction=false, dizziness=true, blurredVision=false, headAche=false, fatigue=true, musclePain=false, dyspnea=true, tachypnea=true, coldLimp=false, internHemorrage=true, externHemorrage=true, nausea=false, jaundice=false, splenomegalia=false, cranealBallooning=false, aplasticCrisis=false, bacterianInfection=false, osteoporosis=false, boneDeformation=false, maxilarBoneHyperplasia=false, brittleNails=false, tongueInflamation=false, diarrhoea=false, paresthesia=false, petechiae=false}
