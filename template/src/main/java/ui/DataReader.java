@@ -1,4 +1,4 @@
-package inputoutput;
+package ui;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -119,8 +119,11 @@ public class DataReader {
     }
 
     public static void main(String[] args) {
-        String route = "C:\\DSS\\Project\\Anemia-Diagnose\\template\\CSV\\example.csv";
         Patient p = new Patient("Alejandra", "Morell", 1);
+        //String route = "C:\\DSS\\Project\\Anemia-Diagnose\\template\\CSV\\"+p.getName()+"_"+p.getSurname()+".csv";
+        String route = "CSV\\"+p.getName()+"_"+p.getSurname()+".csv";
+
+
         try {
             Patient p2 = readHemogram(route, p);
             System.out.println(p2.toString());

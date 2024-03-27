@@ -1,5 +1,9 @@
 package anemiaDiagnosis;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 /**
  * @author alberto.gildelafuent
  */
@@ -7,7 +11,7 @@ public class Patient {
 
     private String name;
     private String surname;
-    private final int id_patient; // id of the operation
+    private final int id_patient; // id of the patient
     private Anemia anemia;
     private Parameters parameters;
 
@@ -19,12 +23,20 @@ public class Patient {
         parameters = new Parameters();
     }
 
-    public Parameters getParameters() {
-        return parameters;
-    }
+
+
 
     public void setAnemia(Anemia anemia) {
         this.anemia = anemia;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
     }
 
     public int getId_patient() {
@@ -34,7 +46,22 @@ public class Patient {
     public Anemia getAnemia() {
         return anemia;
     }
+    public Parameters getParameters() {
+        return parameters;
+    }
 
+    public File storeFinalReport() throws FileNotFoundException {
+
+        File file = new File("Reports\\" + name + "_" + surname + ".txt");
+
+        PrintWriter pw = new PrintWriter(file);
+        pw.println("\nPatient: " + name + " " + surname);
+        pw.println("\nId: " +id_patient);
+        pw.println("\nParameters: " + parameters.toString());
+        pw.close();
+
+        return file;
+    }
 
 
 

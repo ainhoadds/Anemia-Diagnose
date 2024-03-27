@@ -41,19 +41,19 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit-version}</version>
-      <scope>test</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback-version}</version>
-      <scope>test</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.drools</groupId>
       <artifactId>drools-wiring-dynamic</artifactId>
       <version>8.44.0.Final</version>
-      <scope>test</scope>
+      <scope>compile</scope>
     </dependency>
 
     <!--<dependency>

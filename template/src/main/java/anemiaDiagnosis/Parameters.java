@@ -1,5 +1,7 @@
 package anemiaDiagnosis;
 
+import ui.Utilities;
+
 public class Parameters {
     //HEMOGRAM SYMPTOMS
     private Anemia anemia;
@@ -738,12 +740,154 @@ public class Parameters {
         return petechiae;
     }
 
+    public static void setParameters(Patient p){
+        Utilities.showSignsAndSymptons();
+        System.out.println("Introduce the number(s) of the symptoms that the patient presents: ");
+        System.out.println(" Press 0 to exit: ");
+        while(true) {
+            int i = Utilities.readInteger("   ");
+            if(i == 0) {
+                break;
+            } else {
+                switch (i){
+                    case 1: {
+                        p.getParameters().setSkinPalenes(true);
+                        break;
+                    }
+                    case 2: {
+                        p.getParameters().setTachycardia(true);
+                        break;
+                    }
+                    case 3:{
+                        p.getParameters().setTinnitus(true);
+                        break;
+                    }
+                    case 4:{
+                        p.getParameters().setPalpitations(true);
+                        break;
+                    }
+                    case 5:{
+                        p.getParameters().setChestPain(true);
+                        break;
+                    }
+                    case 6:{
+                        p.getParameters().setInfarction(true);
+                        break;
+                    }
+                    case 7:{
+                        p.getParameters().setDizziness(true);
+                        break;
+                    }
+                    case 8:{
+                        p.getParameters().setBlurredVision(true);
+                        break;
+                    }
+                    case 9:{
+                        p.getParameters().setHeadAche(true);
+                        break;
+                    }
+                    case 10:{
+                        p.getParameters().setFatigue(true);
+                        break;
+                    }
+                    case 11:{
+                        p.getParameters().setMusclePain(true);
+                        break;
+                    }
+                    case 12:{
+                        p.getParameters().setDyspnea(true);
+                        break;
+                    }
+                    case 13:{
+                        p.getParameters().setTachypnea(true);
+                        break;
+                    }
+                    case 14:{
+                        p.getParameters().setColdLimp(true);
+                        break;
+                    }
+                    case 15:{
+                        p.getParameters().setInternHemorrage(true);
+                        break;
+                    }
+                    case 16:{
+                        p.getParameters().setExternHemorrage(true);
+                        break;
+                    }
+                    case 17:{
+                        p.getParameters().setNausea(true);
+                        break;
+                    }
+                    case 18:{
+                        p.getParameters().setJaundice(true);
+                        break;
+                    }
+                    case 19:{
+                        p.getParameters().setSplenomegalia(true);
+                        break;
+                    }
+                    case 20:{
+                        p.getParameters().setCranealBallooning(true);
+                        break;
+                    }
+                    case 21:{
+                        p.getParameters().setAplasticCrisis(true);
+                        break;
+                    }
+                    case 22:{
+                        p.getParameters().setBacterianInfection(true);
+                        break;
+                    }
+                    case 23:{
+                        p.getParameters().setOsteoporosis(true);
+                        break;
+                    }
+                    case 24:{
+                        p.getParameters().setBoneDeformation(true);
+                        break;
+                    }
+                    case 25:{
+                        p.getParameters().setMaxilarBoneHyperplasia(true);
+                        break;
+                    }
+                    case 26:{
+                        p.getParameters().setBrittleNails(true);
+                        break;
+                    }
+                    case 27:{
+                        p.getParameters().setTongueInflamation(true);
+                        break;
+                    }
+                    case 28:{
+                        p.getParameters().setDiarrhoea(true);
+                        break;
+                    }
+                    case 29:{
+                        p.getParameters().setParesthesia(true);
+                        break;
+                    }
+                    case 30:{
+                        p.getParameters().setPetechiae(true);
+                        break;
+                    }
+                    default: {
+                        System.out.println(" ERROR: Invalid option.");
+                        break;
+                    }
+
+
+                }
+
+            }
+        }
+
+    }
 
     @Override
     public String toString() {
         return "Parameters{" +
                 "anemia: " + anemia +
-                ", hb=" + hb +
+                "\nhb=" + hb +
                 ", epo=" + epo +
                 ", hematocrit=" + hematocrit +
                 ", plaquets=" + plaquets +
@@ -796,5 +940,11 @@ public class Parameters {
                 ", paresthesia=" + paresthesia +
                 ", petechiae=" + petechiae +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        Patient p = new Patient("Alejandra", "Morell",1);
+        setParameters(p);
+        System.out.println(p.getParameters());
     }
 }
