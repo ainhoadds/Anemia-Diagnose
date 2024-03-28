@@ -65,9 +65,10 @@ public class Parameters {
     }
 
 
-    //to facilitate the test, i have created a constructor per rule to just stablish the parametrs that the rule depende on
-    //constuctor that creates a parameter that triggers rule 1
+    //to facilitate the test, we have created a constructor per rule to just stablish the parameters that the rule depends on
 
+
+    //constuctor that creates a parameter that triggers rule 1
 
     public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean tachycardia, boolean tinnitus, boolean palpitations, boolean chestPain, boolean infarction, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean musclePain, boolean dyspnea, boolean tachypnea, boolean coldLimp) {
         this.hb = hb;
