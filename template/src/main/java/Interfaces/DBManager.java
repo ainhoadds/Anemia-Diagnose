@@ -29,4 +29,6 @@ public interface DBManager {
     public void changePassword(String username, String oldPassword, String newPassword);
 
     public List<User> listAllUsers();
+
+    public User getUser(String username);
 }

@@ -11,6 +11,10 @@ import java.util.List;
 public class JDBCManager implements DBManager {
 
     private Connection c;
+
+    public JDBCManager() {
+        this.c = null;
+    }
     @Override
     public void connect() {
         try {
@@ -19,6 +23,7 @@ public class JDBCManager implements DBManager {
                 //here we get the connection
                 this.c = DriverManager.getConnection("jdbc:sqlite:./db/AnemiaDiagnoseUsers.db");
                 c.createStatement().execute("PRAGMA foreign_keys=ON");
+                createTables();
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -223,6 +228,29 @@ public class JDBCManager implements DBManager {
             e.printStackTrace();
         }
         return users;
+    }
+
+    @Override
+    public User getUser(String username) {
+        User u = null;
+        try {
+            String sql = "SELECT * FROM USER WHERE username = ?";
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                byte[] password = rs.getBytes("password");
+                int role_id = rs.getInt("role_id");
+                Role r = getRole(role_id);
+                u = new User(id, username, password, r);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
     }
 
 

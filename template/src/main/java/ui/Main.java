@@ -1,5 +1,7 @@
 package ui;
 
+import JDBC.JDBCManager;
+import Pojos.User;
 import anemiaDiagnosis.Parameters;
 import anemiaDiagnosis.ParametersUnit;
 import anemiaDiagnosis.Patient;
@@ -18,20 +20,57 @@ public class Main {
     private static Parameters parameters;
     private static File finalReport;
 
-
+    private static User user;
 
     public static void main(String[] args) {
 
         patient = null;
         parameters = null;
         finalReport = null;
+        JDBCManager manager = new JDBCManager();
+        manager.connect();
+        while (true) {
+            Utilities.LogInMenu();
+            int option = Utilities.readInteger("Choose an option: ");
+            switch (option) {
+                case 1: {
+                    user = Utilities.logIn(manager);
+                    if(user != null){
+                        mainMenu();
+                    }
+                    break;
+                }
+                case 2: {
+                    user = Utilities.register(manager);
+                    if(user != null){
+                        mainMenu();
+                    }
+                    break;
+                }
+                case 0: {
+                    System.out.println("Exiting...");
+                    manager.disconnect();
+                    System.exit(0);
+                }
+                default: {
+                    System.out.println(" ERROR: Invalid option.");
+                    break;
+                }
+            }
+        }
 
+
+    }
+
+
+    public static void mainMenu() {
+        int option2;
         while (true) {
 
             Utilities.showMenu();
-            int option = Utilities.readInteger("Choose an option: " );
+            option2 = Utilities.readInteger("Choose an option: " );
 
-            switch(option){
+            switch(option2){
                 case 1: {
                     System.out.println("Register personal data");
                     patient = Utilities.askPersonalData();
@@ -39,16 +78,16 @@ public class Main {
                 }
                 case 2: {
                     System.out.println("Load patient's hemogram");
-                        try {
-                            String route = "CSV\\" + patient.getName() + "_" + patient.getSurname() + ".csv";
-                            DataReader.readHemogram(route, patient);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }catch (NullPointerException n){
-                            System.out.println("ERROR: you must first register patient's data");
-                        }
-                        System.out.println(patient.getParameters());
-                        break;
+                    try {
+                        String route = "CSV\\" + patient.getName() + "_" + patient.getSurname() + ".csv";
+                        DataReader.readHemogram(route, patient);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }catch (NullPointerException n){
+                        System.out.println("ERROR: you must first register patient's data");
+                    }
+                    System.out.println(patient.getParameters());
+                    break;
 
                 }
 
@@ -95,7 +134,8 @@ public class Main {
                 }
 
                 case 0: {
-                    System.out.println("Program terminated");
+                    System.out.println("Loggin out...");
+                    user = null;
                     return;
                 }
 
@@ -103,18 +143,9 @@ public class Main {
                     System.out.println(" ERROR: Invalid option.");
                     break;
                 }
-
-
             }
-
-
-
-
         }
     }
-
-
-
 
 
 

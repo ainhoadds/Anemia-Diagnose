@@ -1,9 +1,12 @@
 package ui;
 
 
+import JDBC.JDBCManager;
+import Pojos.User;
 import anemiaDiagnosis.Patient;
 
 import java.io.*;
+import java.sql.Connection;
 
 public abstract class Utilities {
     private static InputStreamReader isr = new InputStreamReader(System.in);
@@ -115,8 +118,44 @@ public abstract class Utilities {
                 + "\n 3. Introduce visible signs and symptons "
                 + "\n 4. Perform the anemia diagnosis supported by a DSS"
                 + "\n 5. Patient's diagnosis report"
+                + "\n 0. Log out");
+
+    }
+
+    public static void LogInMenu(){ //shows the Log In Menu
+
+        System.out.println("\nWelcome to the Anemia Diagnostic DSS Program: "
+                + "\n 1. Log In"
+                + "\n 2. Register"
                 + "\n 0. Exit");
 
+    }
+
+    public static User logIn(JDBCManager manager) {
+        String username = readString("Username: ");
+        String password = readString("Password: ");
+        if (manager.checkUsername(username) && manager.checkPassword(username, password)) {
+            System.out.println("Log in successful");
+            return manager.getUser(username);
+        } else {
+            System.out.println("Log in failed");
+            return null;
+        }
+    }
+
+    public static User register(JDBCManager manager) {
+        String username = readString("Username: ");
+        String password = readString("Password: ");
+        if (manager.checkUsername(username)) {
+            System.out.println("Username already exists");
+            return null;
+        } else {
+            User u = new User(username, User.encryptPassword(password), manager.getRole("Doctor"));
+            manager.addUser(u);
+            System.out.println("User registered");
+            u = manager.getUser(username);
+            return u;
+        }
     }
 
 
