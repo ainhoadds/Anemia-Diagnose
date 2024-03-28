@@ -21,7 +21,7 @@ public class JDBCManager implements DBManager {
             if (c == null) {
                 Class.forName("org.sqlite.JDBC");
                 //here we get the connection
-                this.c = DriverManager.getConnection("jdbc:sqlite:./db/AnemiaDiagnoseUsers.db");
+                this.c = DriverManager.getConnection("jdbc:sqlite:./template/db/AnemiaDiagnoseUsers.db");
                 c.createStatement().execute("PRAGMA foreign_keys=ON");
                 createTables();
             }
@@ -54,7 +54,7 @@ public class JDBCManager implements DBManager {
                 addRole(doctorRole);
             }
             if (listAllUsers().isEmpty()) {
-                User admin = new User("admin", User.encryptPassword("admin"), new Role("Doctor"));
+                User admin = new User("admin", User.encryptPassword("admin"), getRole("Doctor"));
                 addUser(admin);
             }
             stmt.close();
@@ -104,7 +104,7 @@ public class JDBCManager implements DBManager {
             String sql = "SELECT * FROM ROLE WHERE type = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, type);
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 int id = rs.getInt("id");
                 r = new Role(id, type);
@@ -124,7 +124,7 @@ public class JDBCManager implements DBManager {
             String sql = "SELECT * FROM ROLE WHERE id = ?";
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 String type = rs.getString("type");
                 r = new Role(id, type);
