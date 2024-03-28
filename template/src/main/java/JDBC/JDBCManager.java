@@ -21,7 +21,7 @@ public class JDBCManager implements DBManager {
             if (c == null) {
                 Class.forName("org.sqlite.JDBC");
                 //here we get the connection
-                this.c = DriverManager.getConnection("jdbc:sqlite:./template/db/AnemiaDiagnoseUsers.db");
+                this.c = DriverManager.getConnection("jdbc:sqlite:./db/AnemiaDiagnoseUsers.db");
                 c.createStatement().execute("PRAGMA foreign_keys=ON");
                 createTables();
             }
