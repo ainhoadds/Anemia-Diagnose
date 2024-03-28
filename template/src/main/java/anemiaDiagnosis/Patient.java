@@ -55,9 +55,9 @@ public class Patient {
         File file = new File("Reports\\" + name + "_" + surname + ".txt");
 
         PrintWriter pw = new PrintWriter(file);
-        pw.println("\nPatient: " + name + " " + surname);
-        pw.println("\nId: " +id_patient);
-        pw.println("\nParameters: " + parameters.toString());
+        pw.println("Patient: " + name + " " + surname);
+        pw.println("d: " +id_patient);
+        pw.println("Parameters: " + parameters.toString());
         pw.close();
         return file;
 
