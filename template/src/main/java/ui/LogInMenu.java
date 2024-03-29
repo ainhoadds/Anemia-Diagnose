@@ -5,10 +5,11 @@ import JDBC.JDBCManager;
 
 public class LogInMenu {
     private static User user;
+    private static JDBCManager manager;
 
     public static void main(String[] args) {
 
-        JDBCManager manager = new JDBCManager();
+        manager = new JDBCManager();
         manager.connect();
 
         while (true) {
@@ -42,6 +43,7 @@ public class LogInMenu {
             }
         }
     }
+
     public static User logIn(JDBCManager manager) {
         String username = Utilities.readString("Username: ");
         String password = Utilities.readString("Password: ");
