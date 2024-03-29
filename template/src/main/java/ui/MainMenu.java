@@ -7,70 +7,29 @@ import anemiaDiagnosis.ParametersUnit;
 import anemiaDiagnosis.Patient;
 import org.drools.ruleunits.api.RuleUnitInstance;
 import org.drools.ruleunits.api.RuleUnitProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Parameter;
 
-public class Main {
+public class MainMenu {
     private static Patient patient;
     private static Parameters parameters;
     private static File finalReport;
 
-    private static User user;
-
-    public static void main(String[] args) {
+    public static void menu(){
 
         patient = null;
         parameters = null;
         finalReport = null;
-        JDBCManager manager = new JDBCManager();
-        manager.connect();
-        while (true) {
-            Utilities.LogInMenu();
-            int option = Utilities.readInteger("Choose an option: ");
-            switch (option) {
-                case 1: {
-                    user = Utilities.logIn(manager);
-                    if(user != null){
-                        mainMenu();
-                    }
-                    break;
-                }
-                case 2: {
-                    user = Utilities.register(manager);
-                    if(user != null){
-                        mainMenu();
-                    }
-                    break;
-                }
-                case 0: {
-                    System.out.println("Exiting...");
-                    manager.disconnect();
-                    System.exit(0);
-                }
-                default: {
-                    System.out.println(" ERROR: Invalid option.");
-                    break;
-                }
-            }
-        }
 
-
-    }
-
-
-    public static void mainMenu() {
-        int option2;
+        int option;
         while (true) {
 
             Utilities.showMenu();
-            option2 = Utilities.readInteger("Choose an option: " );
+            option = Utilities.readInteger("Choose an option: ");
 
-            switch(option2){
+            switch (option) {
                 case 1: {
                     System.out.println("Register personal data");
                     patient = Utilities.askPersonalData();
@@ -83,7 +42,7 @@ public class Main {
                         DataReader.readHemogram(route, patient);
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }catch (NullPointerException n){
+                    } catch (NullPointerException n) {
                         System.out.println("ERROR: you must first register patient's data");
                     }
                     System.out.println(patient.getParameters());
@@ -91,18 +50,18 @@ public class Main {
 
                 }
 
-                case 3:{
+                case 3: {
                     System.out.println("Introduce visible signs and symptons");
                     try {
                         Parameters.setParameters(patient);
                         parameters = patient.getParameters();
-                    }catch(NullPointerException np){
+                    } catch (NullPointerException np) {
                         System.out.println("ERROR: you must first register patient's data");
                     }
                     break;
                 }
 
-                case 4:{
+                case 4: {
                     System.out.println("Perform the anemia diagnosis supported by a DSS");
 
                     ParametersUnit parametersUnit = new ParametersUnit();
@@ -112,7 +71,7 @@ public class Main {
                         instance.fire();
 
 
-                    }finally{
+                    } finally {
                         instance.close();
                     }
 
@@ -122,12 +81,12 @@ public class Main {
 
                 case 5: {
                     System.out.println("Patient's diagnosis report");
-                    try{
+                    try {
                         finalReport = patient.storeFinalReport();
                         Utilities.showReport(finalReport);
-                    } catch(NullPointerException e) {
+                    } catch (NullPointerException e) {
                         System.out.println(" ERROR: You must first register your patient information.");
-                    }catch (FileNotFoundException fn) {
+                    } catch (FileNotFoundException fn) {
                         System.out.println();
                     }
                     break;
@@ -135,7 +94,7 @@ public class Main {
 
                 case 0: {
                     System.out.println("Loggin out...");
-                    user = null;
+                    //user = null;
                     return;
                 }
 
@@ -146,6 +105,7 @@ public class Main {
             }
         }
     }
+}
 
 
 
@@ -179,4 +139,4 @@ public class Main {
         }
 
     }*/
-}
+

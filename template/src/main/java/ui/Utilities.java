@@ -131,32 +131,7 @@ public abstract class Utilities {
 
     }
 
-    public static User logIn(JDBCManager manager) {
-        String username = readString("Username: ");
-        String password = readString("Password: ");
-        if (manager.checkUsername(username) && manager.checkPassword(username, password)) {
-            System.out.println("Log in successful");
-            return manager.getUser(username);
-        } else {
-            System.out.println("Log in failed");
-            return null;
-        }
-    }
 
-    public static User register(JDBCManager manager) {
-        String username = readString("Username: ");
-        String password = readString("Password: ");
-        if (manager.checkUsername(username)) {
-            System.out.println("Username already exists");
-            return null;
-        } else {
-            User u = new User(username, User.encryptPassword(password), manager.getRole("Doctor"));
-            manager.addUser(u);
-            System.out.println("User registered");
-            u = manager.getUser(username);
-            return u;
-        }
-    }
 
 
 }

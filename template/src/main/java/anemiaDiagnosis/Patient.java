@@ -56,7 +56,7 @@ public class Patient {
 
         PrintWriter pw = new PrintWriter(file);
         pw.println("Patient: " + name + " " + surname);
-        pw.println("d: " +id_patient);
+        pw.println("Id: " +id_patient);
         pw.println("Parameters: " + parameters.toString());
         pw.close();
         return file;
