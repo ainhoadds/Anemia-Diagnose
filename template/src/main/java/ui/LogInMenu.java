@@ -1,6 +1,6 @@
 package ui;
 
-import Pojos.User;
+import pojos.User;
 import JDBC.JDBCManager;
 
 public class LogInMenu {

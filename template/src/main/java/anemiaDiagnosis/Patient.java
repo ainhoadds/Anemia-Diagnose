@@ -53,18 +53,11 @@ public class Patient {
     public File storeFinalReport() throws FileNotFoundException {
 
         File file = new File("Reports\\" + name + "_" + surname + ".txt");
-
         PrintWriter pw = new PrintWriter(file);
-        pw.println("Patient: " + name + " " + surname);
-        pw.println("Id: " +id_patient);
-        pw.println("Parameters: " + parameters.toString());
+        pw.println(this.toString());
         pw.close();
         return file;
-
     }
-
-
-
 
     @Override //calcula un código hash basado en el atributo id_operation del objeto actual
     public int hashCode() { //hashCode para obtener el código hash de un objeto (valor numérico que representa de manera única el estado de un objeto)
@@ -99,12 +92,14 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", id_patient=" + id_patient +
-                ", anemia='" + anemia + '\'' +
-                ", parameters=" + parameters +
-                '}';
+        String s = "Patient ID: " + id_patient + "\n"
+                + "Name: " + name + " " + surname + "\n"
+                + "\nAnalytic Parameters: \n" + parameters.toString();
+        if(anemia.equals(null)){
+            s = s + "\nAnemia risk probability: " + parameters.getRisk();
+        } else {
+            s = s + "\nAnemia type: " + anemia + "\n";
+        }
+        return s;
     }
 }

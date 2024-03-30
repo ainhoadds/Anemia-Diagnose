@@ -1,8 +1,8 @@
 package JDBC;
 
-import Interfaces.DBManager;
-import Pojos.Role;
-import Pojos.User;
+import interfaces.DBManager;
+import pojos.Role;
+import pojos.User;
 
 import java.sql.*;
 import java.util.ArrayList;

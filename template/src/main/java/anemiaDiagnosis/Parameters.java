@@ -5,26 +5,26 @@ import ui.Utilities;
 public class Parameters {
     //HEMOGRAM SYMPTOMS
     private Anemia anemia;
-    private float hb; //Hemoglobin
-    private float epo; //Eritropoyetin
-    private int hematocrit;
-    private float plaquets;
-    private float anysocytosis;
-    private float retyculocytes;
-    private float leucocytes;
+    private float hb; //Hemoglobin (g/dL)
+    private float epo; //Eritropoyetin (mU/mL)
+    private int hematocrit; // (%)
+    private float plaquets; //(fL)
+    private float anysocytosis; // coeficcient(%)
+    private float retyculocytes; //(%)
+    private float leucocytes; //(µL)
     private BloodVolume bloodVolume;
-    private float rbc; //Red Blood Cells
-    private int mcv; //Mean Corpuscular Volume
-    private int mch; //Mean Corpuscular Hemoglobin
-    private int mchc; //Mean Corpuscular Hemoglobin Concentration
-    private int fe; //Iron values
-    private float bilirubine;
-    private int ldh; //Lactate Dehydrogenase
-    private float haptoglobin;
-    private float ferritin;
-    private float b12; //Vitamin B12
-    private float folicAcid;
-    private float glucocorticoids;
+    private float rbc; //Red Blood Cells (cells/µL) ; 10^6 ( million cells/µL)
+    private int mcv; //Mean Corpuscular Volume (fL) or millions per microlites (10^6/µL)
+    private int mch; //Mean Corpuscular Hemoglobin picogrames(pg)
+    private int mchc; //Mean Corpuscular Hemoglobin Concentration (g/L)
+    private int fe; //Iron values (mcg/dL) microgrames per decilitre
+    private float bilirubin; //(mcg/dL)
+    private int ldh; //Lactate Dehydrogenase (U/L) units per litre
+    private float haptoglobin; //(mg/dL) miligrames
+    private float ferritin; //(ng/mL) nanogrames
+    private float b12; //Vitamin B12 (pg/mL) picogrames per mililitre
+    private float folicAcid; //(ng/mL)
+    private float glucocorticoids; //(µg/dL)
     private boolean hbUrine; //Amount of Hemoglobin in Urine
     private boolean feUrine; // Amount of Iron in Urine
 
@@ -60,17 +60,38 @@ public class Parameters {
     private boolean paresthesia; //sensation of tingling or “pins and needles” underneath your skin
     private boolean petechiae; //pinpoint non-blanching spots in the skin
 
+    private int index;
+    private RiskProbability risk;
     public Parameters(){
-
+        this.index = 0;
+        //inicializar todo a null
     }
 
+    //methos that assigns a score that increetns the general risk index based on the patient's parameters
+    private void incrementIndex(int index){
+        this.index = this.index + index;
+    }
 
-    //to facilitate the test, we have created a constructor per rule to just stablish the parameters that the rule depends on
+    public int getIndex() {
+        return index;
+    }
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
-    //constuctor that creates a parameter that triggers rule 1
+    public RiskProbability getRisk() {
+        return risk;
+    }
 
-    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean tachycardia, boolean tinnitus, boolean palpitations, boolean chestPain, boolean infarction, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean musclePain, boolean dyspnea, boolean tachypnea, boolean coldLimp) {
+    public void setRisk(RiskProbability risk) {
+        this.risk = risk;
+    }
+
+//to facilitate the test, we have created a constructor per rule to just stablish the parameters that the rule depends on
+    //constructor that creates a parameter that triggers rule 1
+
+    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubin, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean tachycardia, boolean tinnitus, boolean palpitations, boolean chestPain, boolean infarction, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean musclePain, boolean dyspnea, boolean tachypnea, boolean coldLimp) {
         this.hb = hb;
         this.epo = epo;
         this.hematocrit = hematocrit;
@@ -82,7 +103,7 @@ public class Parameters {
         this.mcv = mcv;
         this.mchc = mchc;
         this.fe = fe;
-        this.bilirubine = bilirubine;
+        this.bilirubin = bilirubin;
         this.ldh = ldh;
         this.haptoglobin = haptoglobin;
         this.ferritin = ferritin;
@@ -104,10 +125,9 @@ public class Parameters {
         this.tachypnea = tachypnea;
         this.coldLimp = coldLimp;
     }
-    //contructor that creates a parameter that triggers rule 2
 
-
-    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, BloodVolume bloodVolume, int mcv, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean tachycardia, boolean dizziness, boolean fatigue, boolean dyspnea, boolean tachypnea, boolean internHemorrage, boolean externHemorrage) {
+    //constructor that creates a parameter that triggers rule 2
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, BloodVolume bloodVolume, int mcv, float bilirubin, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean tachycardia, boolean dizziness, boolean fatigue, boolean dyspnea, boolean tachypnea, boolean internHemorrage, boolean externHemorrage) {
         this.epo = epo;
         this.hematocrit = hematocrit;
         this.plaquets = plaquets;
@@ -116,7 +136,7 @@ public class Parameters {
         this.leucocytes = leucocytes;
         this.bloodVolume = bloodVolume;
         this.mcv = mcv;
-        this.bilirubine = bilirubine;
+        this.bilirubin = bilirubin;
         this.ldh = ldh;
         this.haptoglobin = haptoglobin;
         this.ferritin = ferritin;
@@ -132,8 +152,8 @@ public class Parameters {
         this.internHemorrage = internHemorrage;
         this.externHemorrage = externHemorrage;
     }
-
-    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mch, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean hbUrine, boolean feUrine, boolean skinPalenes, boolean fatigue, boolean jaundice, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis) {
+    //constructor that creates a parameter that triggers rule 3
+    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mch, int mchc, int fe, float bilirubin, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean hbUrine, boolean feUrine, boolean skinPalenes, boolean fatigue, boolean jaundice, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis) {
         this.hb = hb;
         this.epo = epo;
         this.hematocrit = hematocrit;
@@ -146,7 +166,7 @@ public class Parameters {
         this.mch = mch;
         this.mchc = mchc;
         this.fe = fe;
-        this.bilirubine = bilirubine;
+        this.bilirubin = bilirubin;
         this.ldh = ldh;
         this.haptoglobin = haptoglobin;
         this.ferritin = ferritin;
@@ -163,14 +183,15 @@ public class Parameters {
         this.aplasticCrisis = aplasticCrisis;
     }
 
-    public Parameters(int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, float bilirrubine, int mcv, int mchc, int fe, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, int ldh, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis, boolean bacterianInfection, boolean osteoporosis, boolean boneDeformation, boolean maxilarBoneHyperplasia) {
+    //constructor that creates a parameter that triggers rule 4
+    public Parameters(int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, float bilirubin, int mcv, int mchc, int fe, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, int ldh, boolean splenomegalia, boolean cranealBallooning, boolean aplasticCrisis, boolean bacterianInfection, boolean osteoporosis, boolean boneDeformation, boolean maxilarBoneHyperplasia) {
         this.hematocrit = hematocrit;
         this.plaquets = plaquets;
         this.anysocytosis = anysocytosis;
         this.retyculocytes = retyculocytes;
         this.leucocytes = leucocytes;
         this.rbc = rbc;
-        this.bilirubine = bilirrubine;
+        this.bilirubin = bilirubin;
         this.mcv = mcv;
         this.mchc = mchc;
         this.fe = fe;
@@ -188,8 +209,8 @@ public class Parameters {
         this.boneDeformation = boneDeformation;
         this.maxilarBoneHyperplasia = maxilarBoneHyperplasia;
     }
-
-    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean palpitations, boolean headAche, boolean fatigue, boolean dyspnea, boolean coldLimp, boolean nausea, boolean brittleNails, boolean tongueInflamation) {
+    //constructor that creates a parameter that triggers rule 5
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubin, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean palpitations, boolean headAche, boolean fatigue, boolean dyspnea, boolean coldLimp, boolean nausea, boolean brittleNails, boolean tongueInflamation) {
         this.epo = epo;
         this.hematocrit = hematocrit;
         this.plaquets = plaquets;
@@ -200,7 +221,7 @@ public class Parameters {
         this.mcv = mcv;
         this.mchc = mchc;
         this.fe = fe;
-        this.bilirubine = bilirubine;
+        this.bilirubin = bilirubin;
         this.ldh = ldh;
         this.haptoglobin = haptoglobin;
         this.ferritin = ferritin;
@@ -217,8 +238,8 @@ public class Parameters {
         this.brittleNails = brittleNails;
         this.tongueInflamation = tongueInflamation;
     }
-
-    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float glucocorticoids, boolean skinPalenes, boolean fatigue, boolean internHemorrage, boolean externHemorrage, boolean petechiae) {
+    //constructor that creates a parameter that triggers rule 6
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubin, int ldh, float haptoglobin, float ferritin, float b12, float glucocorticoids, boolean skinPalenes, boolean fatigue, boolean internHemorrage, boolean externHemorrage, boolean petechiae) {
         this.epo = epo;
         this.hematocrit = hematocrit;
         this.plaquets = plaquets;
@@ -229,7 +250,7 @@ public class Parameters {
         this.mcv = mcv;
         this.mchc = mchc;
         this.fe = fe;
-        this.bilirubine = bilirubine;
+        this.bilirubin = bilirubin;
         this.ldh = ldh;
         this.haptoglobin = haptoglobin;
         this.ferritin = ferritin;
@@ -241,8 +262,8 @@ public class Parameters {
         this.externHemorrage = externHemorrage;
         this.petechiae = petechiae;
     }
-
-    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean headAche, boolean fatigue, boolean dyspnea) {
+    //constructor that creates a parameter that triggers rule 7
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, int mcv, int mchc, int fe, float bilirubin, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean headAche, boolean fatigue, boolean dyspnea) {
         this.epo = epo;
         this.hematocrit = hematocrit;
         this.plaquets = plaquets;
@@ -252,7 +273,7 @@ public class Parameters {
         this.mcv = mcv;
         this.mchc = mchc;
         this.fe = fe;
-        this.bilirubine = bilirubine;
+        this.bilirubin = bilirubin;
         this.ldh = ldh;
         this.haptoglobin = haptoglobin;
         this.ferritin = ferritin;
@@ -264,8 +285,8 @@ public class Parameters {
         this.fatigue = fatigue;
         this.dyspnea = dyspnea;
     }
-
-    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean dizziness, boolean headAche, boolean fatigue, boolean dyspnea, boolean brittleNails) {
+    //constructor that creates a parameter that triggers rule 8
+    public Parameters(float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, float rbc, int mcv, int mchc, int fe, float bilirubin, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean skinPalenes, boolean dizziness, boolean headAche, boolean fatigue, boolean dyspnea, boolean brittleNails) {
         this.epo = epo;
         this.hematocrit = hematocrit;
         this.plaquets = plaquets;
@@ -276,7 +297,7 @@ public class Parameters {
         this.mcv = mcv;
         this.mchc = mchc;
         this.fe = fe;
-        this.bilirubine = bilirubine;
+        this.bilirubin = bilirubin;
         this.ldh = ldh;
         this.haptoglobin = haptoglobin;
         this.ferritin = ferritin;
@@ -290,8 +311,8 @@ public class Parameters {
         this.dyspnea = dyspnea;
         this.brittleNails = brittleNails;
     }
-
-    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, BloodVolume bloodVolume, int mcv, float rbc, int mchc, int fe, float bilirubine, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean dyspnea) {
+    //constructor that creates a parameter that triggers rule 9
+    public Parameters(float hb, float epo, int hematocrit, float plaquets, float anysocytosis, float retyculocytes, float leucocytes, BloodVolume bloodVolume, int mcv, float rbc, int mchc, int fe, float bilirubin, int ldh, float haptoglobin, float ferritin, float b12, float folicAcid, float glucocorticoids, boolean dizziness, boolean blurredVision, boolean headAche, boolean fatigue, boolean dyspnea) {
         this.hb = hb;
         this.epo = epo;
         this.hematocrit = hematocrit;
@@ -304,7 +325,7 @@ public class Parameters {
         this.rbc = rbc;
         this.mchc = mchc;
         this.fe = fe;
-        this.bilirubine = bilirubine;
+        this.bilirubin = bilirubin;
         this.ldh = ldh;
         this.haptoglobin = haptoglobin;
         this.ferritin = ferritin;
@@ -381,8 +402,8 @@ public class Parameters {
         return fe;
     }
 
-    public float getBilirubine() {
-        return bilirubine;
+    public float getBilirubin() {
+        return bilirubin;
     }
 
     public int getLdh() {
@@ -411,6 +432,9 @@ public class Parameters {
 
     public void setHb(float hb) {
         this.hb = hb;
+        if(hb>55){
+            incrementIndex(5);
+        }
     }
 
     public void setEpo(float epo) {
@@ -457,8 +481,8 @@ public class Parameters {
         this.fe = fe;
     }
 
-    public void setBilirubine(float bilirubine) {
-        this.bilirubine = bilirubine;
+    public void setBilirubin(float bilirubin) {
+        this.bilirubin = bilirubin;
     }
 
     public void setLdh(int ldh) {
@@ -741,214 +765,69 @@ public class Parameters {
         return petechiae;
     }
 
-    public static void setParameters(Patient p) throws NullPointerException{
-        if (p == null){
-            throw new NullPointerException();
-        }
-        Utilities.showSignsAndSymptons();
-        System.out.println("Introduce the number(s) of the symptoms that the patient presents: ");
-        System.out.println(" Press 0 to exit: ");
-        while(true) {
-            int i = Utilities.readInteger("   ");
-            if(i == 0) {
-                break;
-            } else {
-                switch (i){
-                    case 1: {
-                        p.getParameters().setSkinPalenes(true);
-                        break;
-                    }
-                    case 2: {
-                        p.getParameters().setTachycardia(true);
-                        break;
-                    }
-                    case 3:{
-                        p.getParameters().setTinnitus(true);
-                        break;
-                    }
-                    case 4:{
-                        p.getParameters().setPalpitations(true);
-                        break;
-                    }
-                    case 5:{
-                        p.getParameters().setChestPain(true);
-                        break;
-                    }
-                    case 6:{
-                        p.getParameters().setInfarction(true);
-                        break;
-                    }
-                    case 7:{
-                        p.getParameters().setDizziness(true);
-                        break;
-                    }
-                    case 8:{
-                        p.getParameters().setBlurredVision(true);
-                        break;
-                    }
-                    case 9:{
-                        p.getParameters().setHeadAche(true);
-                        break;
-                    }
-                    case 10:{
-                        p.getParameters().setFatigue(true);
-                        break;
-                    }
-                    case 11:{
-                        p.getParameters().setMusclePain(true);
-                        break;
-                    }
-                    case 12:{
-                        p.getParameters().setDyspnea(true);
-                        break;
-                    }
-                    case 13:{
-                        p.getParameters().setTachypnea(true);
-                        break;
-                    }
-                    case 14:{
-                        p.getParameters().setColdLimp(true);
-                        break;
-                    }
-                    case 15:{
-                        p.getParameters().setInternHemorrage(true);
-                        break;
-                    }
-                    case 16:{
-                        p.getParameters().setExternHemorrage(true);
-                        break;
-                    }
-                    case 17:{
-                        p.getParameters().setNausea(true);
-                        break;
-                    }
-                    case 18:{
-                        p.getParameters().setJaundice(true);
-                        break;
-                    }
-                    case 19:{
-                        p.getParameters().setSplenomegalia(true);
-                        break;
-                    }
-                    case 20:{
-                        p.getParameters().setCranealBallooning(true);
-                        break;
-                    }
-                    case 21:{
-                        p.getParameters().setAplasticCrisis(true);
-                        break;
-                    }
-                    case 22:{
-                        p.getParameters().setBacterianInfection(true);
-                        break;
-                    }
-                    case 23:{
-                        p.getParameters().setOsteoporosis(true);
-                        break;
-                    }
-                    case 24:{
-                        p.getParameters().setBoneDeformation(true);
-                        break;
-                    }
-                    case 25:{
-                        p.getParameters().setMaxilarBoneHyperplasia(true);
-                        break;
-                    }
-                    case 26:{
-                        p.getParameters().setBrittleNails(true);
-                        break;
-                    }
-                    case 27:{
-                        p.getParameters().setTongueInflamation(true);
-                        break;
-                    }
-                    case 28:{
-                        p.getParameters().setDiarrhoea(true);
-                        break;
-                    }
-                    case 29:{
-                        p.getParameters().setParesthesia(true);
-                        break;
-                    }
-                    case 30:{
-                        p.getParameters().setPetechiae(true);
-                        break;
-                    }
-                    default: {
-                        System.out.println(" ERROR: Invalid option.");
-                        break;
-                    }
-
-
-                }
-
-            }
-        }
-
-    }
 
     @Override
     public String toString() {
-        return "Parameters{" +
-                "anemia: " + anemia +
-                "\nhb=" + hb +
-                ", epo=" + epo +
-                ", hematocrit=" + hematocrit +
-                ", plaquets=" + plaquets +
-                ", anysocytosis=" + anysocytosis +
-                ", retyculocytes=" + retyculocytes +
-                ", leucocytes=" + leucocytes +
-                ", bloodVolume=" + bloodVolume +
-                ", rbc=" + rbc +
-                ", mcv=" + mcv +
-                ", mch=" + mch +
-                ", mchc=" + mchc +
-                ", fe=" + fe +
-                ", bilirubine=" + bilirubine +
-                ", ldh=" + ldh +
-                ", haptoglobin=" + haptoglobin +
-                ", ferritin=" + ferritin +
-                ", b12=" + b12 +
-                ", folicAcid=" + folicAcid +
-                ", glucocorticoids=" + glucocorticoids +
-                ", hbUrine=" + hbUrine +
-                ", feUrine=" + feUrine +
-                ", skinPalenes=" + skinPalenes +
-                ", tachycardia=" + tachycardia +
-                ", tinnitus=" + tinnitus +
-                ", palpitations=" + palpitations +
-                ", chestPain=" + chestPain +
-                ", infarction=" + infarction +
-                ", dizziness=" + dizziness +
-                ", blurredVision=" + blurredVision +
-                ", headAche=" + headAche +
-                ", fatigue=" + fatigue +
-                ", musclePain=" + musclePain +
-                ", dyspnea=" + dyspnea +
-                ", tachypnea=" + tachypnea +
-                ", coldLimp=" + coldLimp +
-                ", internHemorrage=" + internHemorrage +
-                ", externHemorrage=" + externHemorrage +
-                ", nausea=" + nausea +
-                ", jaundice=" + jaundice +
-                ", splenomegalia=" + splenomegalia +
-                ", cranealBallooning=" + cranealBallooning +
-                ", aplasticCrisis=" + aplasticCrisis +
-                ", bacterianInfection=" + bacterianInfection +
-                ", osteoporosis=" + osteoporosis +
-                ", boneDeformation=" + boneDeformation +
-                ", maxilarBoneHyperplasia=" + maxilarBoneHyperplasia +
-                ", brittleNails=" + brittleNails +
-                ", tongueInflamation=" + tongueInflamation +
-                ", diarrhoea=" + diarrhoea +
-                ", paresthesia=" + paresthesia +
-                ", petechiae=" + petechiae +
-                '}';
-    }
-
-    public static void main(String[] args) {
-        Patient p = new Patient("Alejandra", "Morell",1);
-        setParameters(p);
-        System.out.println(p.getParameters());
+        return " -Hemoblobin: " + hb + "g/dL\n"
+                + " -Erytropyetin: " + epo + "mU/mL\n"
+                + " -Hematocrit: " + hematocrit + "%\n"
+                + " -Plaquets: " + plaquets + "fL\n"
+                + " -Anysocytosis: " + anysocytosis + "%\n"
+                + " -Retyculocytes: " + retyculocytes + "%\n"
+                + " -Leucocytes: " + leucocytes + "µL\n"
+                + " -Blood volume: " + bloodVolume + "\n"
+                + " -Red Blood Cells (RBC): " + rbc + "rbc/mL\n"
+                + " -Mean Corpuscular Volume (MCV): " + mcv + "fL\n"
+                + " -Mean Corpuscular Hemoglobin (MCH): " + mch + "pg\n"
+                + " -Mean Corpuscular Hemoglobin Concentration (MCHC): " + mchc  + "g/L\n"
+                + " -Iron (Fe): " + fe  + "mcg/dL\n"
+                + " -Bilirubin: " + bilirubin + "mcg/dL\n"
+                + " -Lactate Dehydrogenase (LDH): " + ldh  + "units/L\n"
+                + " -Haptoglobin: " + haptoglobin + "mg/dL\n"
+                + " -Ferritin: " + ferritin + "ng/mL\n"
+                + " -B12 Vitamin: " + b12 + "pg/mL\n"
+                + " -Folic Acid: " + folicAcid + "ng/mL\n"
+                + " -Glucocorticoids: " + glucocorticoids + "µL/dL\n"
+                + " -Hemoglin in Urine: " + isHbUrine() + "\n"
+                + " -Iron in Urine: " + isFeUrine() + "\n"
+                + "\nPatient symptoms:\n"
+                + " -Skin paleness: " + isSkinPalenes() + "\n"
+                + " -Tachycardia: " + isTachycardia() + "\n"
+                + " -Tinnitus: " + isTinnitus() + "\n"
+                + " -Palpitations: " + isPalpitations() + "\n"
+                + " -Chest Pain: " + isChestPain() + "\n"
+                + " -Infraction: " + isInfarction() + "\n"
+                + " -Dizziness: " + isDizziness() + "\n"
+                + " -Blurred vision: " + isBlurredVision() + "\n"
+                + " -Hedache: " + isHeadAche() + "\n"
+                + " -Fatigue: " + isFatigue() + "\n"
+                + " -Muscle Pain: " + isMusclePain() + "\n"
+                + " -Dyspnea: " + isDyspnea() + "\n"
+                + " -Tachypena: " + isTachypnea() + "\n"
+                + " -Cold limps (cold hands/feet): " + isColdLimp() + "\n"
+                + " -Internal Hemorrage: " + isInternHemorrage() + "\n"
+                + " -External Hemorrage: " + isExternHemorrage() + "\n"
+                + " -Nausea: " + isNausea() + "\n"
+                + " -Jaundice: " + isJaundice() + "\n"
+                + " -Splenomegalia: " + isSplenomegalia() + "\n"
+                + " -Cranean balloning: " + isCranealBallooning() + "\n"
+                + " -Aplastic Crisis: " + isAplasticCrisis() + "\n"
+                + " -Bacterian infection: " + isBacterianInfection() + "\n"
+                + " -Osteoporosis: " + isOsteoporosis() + "\n"
+                + " -Bone deformation: " + isBoneDeformation() + "\n"
+                + " -Maxilar Bone Hyperplasia: " + isMaxilarBoneHyperplasia() + "\n"
+                + " -Brittle Nails: " + isBrittleNails() + "\n"
+                + " -Tongue inflamation: " + isTongueInflamation() + "\n"
+                + " -Diarrhoea: " + isDiarrhoea() + "\n"
+                + " -Paresthesia: " + isParesthesia() + "\n"
+                + " -Petechiae: " + isPetechiae() + "\n";
     }
 }
+
+
+// Mas comunes incrementan +5/6
+// Menos comunes incrementean +1/2
+
+// Riesgo alto: index > 15
+// Riesgo medio: index <= 15 && index > 7
+// Riesgo bajo: index <= 7

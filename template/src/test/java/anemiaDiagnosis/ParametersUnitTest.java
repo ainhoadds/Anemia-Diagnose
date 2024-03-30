@@ -26,6 +26,10 @@ public class ParametersUnitTest {
         try {
             LOG.info("Insert data"); //Registra un mensaje de información indicando que se están insertando datos.
 
+
+            Parameters p = new Parameters();
+
+
             //parameter that makes rule "Anemic syndrome" trigged
             Parameters p1 = new Parameters(7.0f, 20.0f, 52, 8.1f, 12.0f, 2.4f, 5.0f, 5.0f, 90, 330, 100, 0.5f, 100, 50.5f, 20.5f, 250, 3.0f, 20.0f, true, true, true, true, true, true, true, true, true, true, true, true, true, true);
             //parameter that makes rule "Post hemorragic anemia" trigged

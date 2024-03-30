@@ -1,7 +1,7 @@
-package Interfaces;
+package interfaces;
 
-import Pojos.Role;
-import Pojos.User;
+import pojos.Role;
+import pojos.User;
 
 import java.util.List;
 
