@@ -1,5 +1,6 @@
 package ui;
 
+import anemiaDiagnosis.Anemia;
 import anemiaDiagnosis.Parameters;
 import anemiaDiagnosis.ParametersUnit;
 import anemiaDiagnosis.Patient;
@@ -35,7 +36,7 @@ public class MainMenu {
                     try {
                         String route = "CSV\\" + patient.getName() + "_" + patient.getSurname() + ".csv";
                         Utilities.readHemogram(route, patient);
-                        System.out.println("Parameters loded correctly");
+                        System.out.println("Parameters loaded correctly");
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (NullPointerException n) {
@@ -44,7 +45,7 @@ public class MainMenu {
                     break;
                 }
 
-                case 3: {
+                case 2: {
                     System.out.println("Introduce visible signs and symptons:");
                     try {
                         Utilities.setParameters(patient);
@@ -55,7 +56,7 @@ public class MainMenu {
                     break;
                 }
 
-                case 4: {
+                case 3: {
                     System.out.println("Perform the anemia diagnosis supported by a DSS: ");
                     ParametersUnit parametersUnit = new ParametersUnit();
                     RuleUnitInstance<ParametersUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(parametersUnit);
@@ -63,13 +64,16 @@ public class MainMenu {
                         parametersUnit.getParameters().add(parameters);
                         instance.fire();
                         patient.setAnemia(parameters.getAnemia());
-                    } finally {
+                        if (parameters.getAnemia() == null) {
+                            parameters.calculateRisk();
+                        }
+                    }finally {
                         instance.close();
                     }
                     break;
                 }
 
-                case 5: {
+                case 4: {
                     System.out.println("Patient's diagnosis report:");
                     try {
                         finalReport = patient.storeFinalReport();
@@ -96,21 +100,5 @@ public class MainMenu {
     }
 }
 
-    /*public static void main(String[] args) {
 
-        ParametersUnit parametersUnit = new ParametersUnit();
-
-        RuleUnitInstance<ParametersUnit> instance = RuleUnitProvider.get().createRuleUnitInstance(parametersUnit);
-        try{
-            Parameters p1 = new Parameters(7.0f, 20.0f, 52, 8.1f, 12.0f, 2.4f, 5.0f, 5.0f, 90, 330, 100, 0.5f, 100, 50.5f, 20.5f, 250, 3.0f, 20.0f, true, true, true, true, true, true, true, true, true, true, true, true, true, true);
-            parametersUnit.getParameters().add(p1);
-
-            instance.fire();
-            System.out.println(p1);
-
-        }finally{
-            instance.close();
-        }
-
-    }*/
 

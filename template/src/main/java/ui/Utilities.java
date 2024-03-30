@@ -111,11 +111,10 @@ public abstract class Utilities {
     public static void showMenu(){ //shows the Menu
 
         System.out.println("\nAnemia Diagnostic menu: "
-                + "\n 1. Register personal data"
-                + "\n 2. Load patient's hemogram"
-                + "\n 3. Introduce visible signs and symptons "
-                + "\n 4. Perform the anemia diagnosis supported by a DSS"
-                + "\n 5. Patient's diagnosis report"
+                + "\n 1. Register personal data and load patient's hemogram"
+                + "\n 2. Introduce visible signs and symptons "
+                + "\n 3. Perform the anemia diagnosis supported by a DSS"
+                + "\n 4. Patient's diagnosis report"
                 + "\n 0. Log out");
 
     }

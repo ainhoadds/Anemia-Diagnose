@@ -20,6 +20,7 @@ public class Patient {
         this.name = name;
         this.surname = surname;
         this.id_patient = id_patient;
+        this.anemia = null;
         parameters = new Parameters();
     }
 
@@ -51,7 +52,6 @@ public class Patient {
     }
 
     public File storeFinalReport() throws FileNotFoundException {
-
         File file = new File("Reports\\" + name + "_" + surname + ".txt");
         PrintWriter pw = new PrintWriter(file);
         pw.println(this.toString());
@@ -95,7 +95,8 @@ public class Patient {
         String s = "Patient ID: " + id_patient + "\n"
                 + "Name: " + name + " " + surname + "\n"
                 + "\nAnalytic Parameters: \n" + parameters.toString();
-        if(anemia.equals(null)){
+
+        if(anemia == null){
             s = s + "\nAnemia risk probability: " + parameters.getRisk();
         } else {
             s = s + "\nAnemia type: " + anemia + "\n";

@@ -1,48 +1,47 @@
 Patient ID: 2
 Name: Juan Martin
-Anemia type: null
 
 Analytic Parameters: 
- -Hemoblobin: 0.0g/dL
- -Erytropyetin: 0.0mU/mL
- -Hematocrit: 0%
- -Plaquets: 0.0fL
- -Anysocytosis: 0.0%
- -Retyculocytes: 0.0%
- -Leucocytes: 0.0µL
- -Blood volume: null
- -Red Blood Cells (RBC): 0.0rbc/mL
- -Mean Corpuscular Volume (MCV): 0fL
- -Mean Corpuscular Hemoglobin (MCH): 0pg
- -Mean Corpuscular Hemoglobin Concentration (MCHC): 0g/L
- -Iron (Fe): 0mcg/dL
- -Bilirubin: 0.0mcg/dL
- -Lactate Dehydrogenase (LDH): 0units/L
- -Haptoglobin: 0.0mg/dL
- -Ferritin: 0.0ng/mL
- -B12 Vitamin: 0.0pg/mL
- -Folic Acid: 0.0ng/mL
- -Glucocorticoids: 0.0µL/dL
+ -Hemoblobin: 11.2g/dL
+ -Erytropyetin: 15.0mU/mL
+ -Hematocrit: 50%
+ -Plaquets: 8.1fL
+ -Anysocytosis: 12.1%
+ -Retyculocytes: 2.6%
+ -Leucocytes: 5.1µL
+ -Blood volume: DECREASED
+ -Red Blood Cells (RBC): 3.7rbc/mL
+ -Mean Corpuscular Volume (MCV): 90fL
+ -Mean Corpuscular Hemoglobin (MCH): 300pg
+ -Mean Corpuscular Hemoglobin Concentration (MCHC): 280g/L
+ -Iron (Fe): 50mcg/dL
+ -Bilirubin: 0.5mcg/dL
+ -Lactate Dehydrogenase (LDH): 100units/L
+ -Haptoglobin: 50.5mg/dL
+ -Ferritin: 9.5ng/mL
+ -B12 Vitamin: 300.0pg/mL
+ -Folic Acid: 3.0ng/mL
+ -Glucocorticoids: 20.0µL/dL
  -Hemoglin in Urine: false
  -Iron in Urine: false
 
 Patient symptoms:
- -Skin paleness: false
- -Tachycardia: false
+ -Skin paleness: true
+ -Tachycardia: true
  -Tinnitus: false
  -Palpitations: false
  -Chest Pain: false
  -Infraction: false
- -Dizziness: false
+ -Dizziness: true
  -Blurred vision: false
  -Hedache: false
- -Fatigue: false
+ -Fatigue: true
  -Muscle Pain: false
- -Dyspnea: false
- -Tachypena: false
+ -Dyspnea: true
+ -Tachypena: true
  -Cold limps (cold hands/feet): false
- -Internal Hemorrage: false
- -External Hemorrage: false
+ -Internal Hemorrage: true
+ -External Hemorrage: true
  -Nausea: false
  -Jaundice: false
  -Splenomegalia: false
@@ -57,3 +56,6 @@ Patient symptoms:
  -Diarrhoea: false
  -Paresthesia: false
  -Petechiae: false
+
+Anemia type: POSTHEMORRAGIC_ANEMIA
+
