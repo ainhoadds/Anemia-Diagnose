@@ -1,0 +1,60 @@
+Patient ID: 1
+Name: Angel Perez
+
+Analytic Parameters: 
+ -Hemoblobin: 7.4g/dL
+ -Erytropyetin: 20.4mU/mL
+ -Hematocrit: 45%
+ -Plaquets: 8.1fL
+ -Anysocytosis: 14.6%
+ -Retyculocytes: 1.7%
+ -Leucocytes: 14.2µL
+ -Blood volume: INCREASED
+ -Red Blood Cells (RBC): 5.0rbc/mL
+ -Mean Corpuscular Volume (MCV): 90fL
+ -Mean Corpuscular Hemoglobin (MCH): 14pg
+ -Mean Corpuscular Hemoglobin Concentration (MCHC): 330g/L
+ -Iron (Fe): 100mcg/dL
+ -Bilirubin: 0.5mcg/dL
+ -Lactate Dehydrogenase (LDH): 100units/L
+ -Haptoglobin: 52.3mg/dL
+ -Ferritin: 11.7ng/mL
+ -B12 Vitamin: 300.0pg/mL
+ -Folic Acid: 3.0ng/mL
+ -Glucocorticoids: 20.0µL/dL
+ -Hemoglin in Urine: false
+ -Iron in Urine: false
+
+Patient symptoms:
+ -Skin paleness: true
+ -Tachycardia: false
+ -Tinnitus: false
+ -Palpitations: false
+ -Chest Pain: false
+ -Infraction: false
+ -Dizziness: false
+ -Blurred vision: false
+ -Hedache: false
+ -Fatigue: true
+ -Muscle Pain: true
+ -Dyspnea: true
+ -Tachypena: false
+ -Cold limps (cold hands/feet): false
+ -Internal Hemorrage: false
+ -External Hemorrage: false
+ -Nausea: false
+ -Jaundice: false
+ -Splenomegalia: false
+ -Cranean balloning: false
+ -Aplastic Crisis: false
+ -Bacterian infection: false
+ -Osteoporosis: false
+ -Bone deformation: false
+ -Maxilar Bone Hyperplasia: false
+ -Brittle Nails: false
+ -Tongue inflamation: false
+ -Diarrhoea: false
+ -Paresthesia: false
+ -Petechiae: false
+
+Anemia risk probability: HIGH
