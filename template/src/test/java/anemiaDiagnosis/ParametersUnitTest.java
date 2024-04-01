@@ -26,6 +26,7 @@ public class ParametersUnitTest {
         try {
             LOG.info("Insert data");
 
+            //parameter that makes rule "anemic syndrome" trigged
             Parameters p1 = new Parameters();
             p1.setHb(6.0f);
             p1.setEpo(20.0f);
