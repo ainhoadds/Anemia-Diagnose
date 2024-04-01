@@ -60,7 +60,7 @@ public class Parameters {
     private boolean paresthesia; //sensation of tingling or “pins and needles” underneath your skin
     private boolean petechiae; //pinpoint non-blanching spots in the skin
 
-    private int index; //index of risk for the atributes
+    private int index; //index of risk for the atributes (cumulative sum of the score contributions of the attributes)
     private RiskProbability risk; //final risk prob of having anemia in case of no specific anemic diagnose
 
 
@@ -345,16 +345,16 @@ public class Parameters {
         this.anemia = anemia;
     }
 
-    public void setHb(float hb) { //when setting the Hb, it establishes an index according to the Hb value for later calculation of the final index
+    public void setHb(float hb) { //when setting the Hb, it sums to the total index a score from 1 to 5 depending on its weigh when diagnosing anemia
         this.hb = hb;
-        if(hb >= 11 && hb <= 13.5){ //depending on the value, it gives an score from 1 to 5
-            incrementIndex(3); // this Hb value is deterministic for mild anemia so it has a score (importance) of 3
+        if(hb >= 11 && hb <= 13.5){
+            incrementIndex(3); // this Hb value is deterministic for mild anemia so sums a score (importance) of 3
         }
         if(hb > 8 && hb < 11){
-            incrementIndex(4); //this Hb value indicates moderate anemia so it has a higher weigh
+            incrementIndex(4); //this Hb value indicates moderate anemia and so a higher weigh, it sums 4 to the index
         }
         if(hb <= 8){
-            incrementIndex(5); //hb value that indicates severe anemia, it has the higher index indicating higher risk
+            incrementIndex(5); //hb value that indicates severe anemia, it has the higher score indicating higher risk
         }
     }
 
@@ -365,7 +365,7 @@ public class Parameters {
     public void setHematocrit(int hematocrit) { //hematocrit below a certain value is also a deterministic parameter for diagnosisng anemia
         this.hematocrit = hematocrit;
         if(hematocrit < 53){
-            incrementIndex(4);
+            incrementIndex(4); //sums a value of 4 to the index if so
         }
     }
 
@@ -392,13 +392,13 @@ public class Parameters {
     public void setRbc(float rbc) { //rbc below a certain value also contributes to the risk of having anemia
         this.rbc = rbc;
         if(rbc < 5.3){
-            incrementIndex(4);
+            incrementIndex(4); //sums a value of 4 to the index
         }
     }
 
     public void setMcv(int mcv) {
         this.mcv = mcv;
-        if(mcv < 80){ //indicates possible microcytic anemia
+        if(mcv < 80){ //indicates possible microcytic anemia so sums 3 to the index
             incrementIndex(3);
         }
         if(mcv > 100){ //indicates possible macrocytic anemia
@@ -433,7 +433,7 @@ public class Parameters {
     public void setFerritin(float ferritin) { //ferritin below 12 is a minor sign of anemia but it also counts
         this.ferritin = ferritin;
         if(ferritin < 12){
-            incrementIndex(2);
+            incrementIndex(2); //sums 2 to the index
         }
     }
 
@@ -458,7 +458,7 @@ public class Parameters {
 
     }
 
-    public void setSkinPalenes(boolean skinPalenes) { //this is a common sign of having anemia but it is not that risky at all
+    public void setSkinPalenes(boolean skinPalenes) { //this is a common sign of having anemia with a low score as it is not that important
         this.skinPalenes = skinPalenes;
         incrementIndex(1);
     }
@@ -595,7 +595,7 @@ public class Parameters {
         this.index = this.index + index;
     }
 
-    //method that calculates the risk of having anemia according to the total sum of all the scores
+    //method that calculates the risk of having anemia according to the index
     public void calculateRisk(){
         if(this.index>= 17){
             this.setRisk(RiskProbability.HIGH);
