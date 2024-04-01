@@ -158,32 +158,6 @@ then
     System.out.println($parameters.getAnemia());
 end
 
-/*
-rule "StablishHighRiskIndex"
-when
-    $parameters : /parameters[anemia.equals(null), index>=15]
-then
-    modify ($parameters) { setRisk(RiskProbability.HIGH)}
-    System.out.println($parameters.getRisk());
-end
-
-rule "StablishModerateRiskIndex"
-when
-    $parameters : /parameters[anemia.equals(null), index < 15 && index> 5]
-then
-    modify ($parameters) { setRisk(RiskProbability.MODERATE)}
-    System.out.println($parameters.getRisk());
-end
-
-rule "StablishLowRiskIndex"
-when
-    $parameters : /parameters[anemia.equals(null), index!= 0 && index<=5 ]
-then
-    modify ($parameters) { setRisk(RiskProbability.LOW)}
-    System.out.println($parameters.getRisk());
-end
-*/
-
 query Diagnose
     $parameters : /parameters[ anemia == Anemia.POLYCYTHEMIA] //en la consutla se busca los parametros cuya hemoglobina este por encima de 18.5
 end

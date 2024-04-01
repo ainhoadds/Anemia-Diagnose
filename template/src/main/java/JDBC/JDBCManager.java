@@ -8,7 +8,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCManager implements DBManager {
+
+public class JDBCManager implements DBManager { //class that impelements the DB manager interface and uses SQL queries to interact with the DB
 
     private Connection c;
 

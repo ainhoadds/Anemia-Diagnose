@@ -5,7 +5,7 @@ import pojos.User;
 
 import java.util.List;
 
-public interface DBManager {
+public interface DBManager { //this interface proporcionates methods to interact with the DB that manages roles and users operations
     public void connect();
 
     public void disconnect();

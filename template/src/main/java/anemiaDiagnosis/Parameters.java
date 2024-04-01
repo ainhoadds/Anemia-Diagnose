@@ -5,7 +5,7 @@ import ui.Utilities;
 public class Parameters {
     //HEMOGRAM SYMPTOMS
     private Anemia anemia;
-    private float hb; //Hemoglobin (g/dL) 5-GRAVE, 4-MODERADA, 3-LEVE
+    private float hb; //Hemoglobin (g/dL)
     private float epo; //Eritropoyetin (mU/mL)
     private int hematocrit; // (%)
     private float plaquets; //(fL)
@@ -345,16 +345,16 @@ public class Parameters {
         this.anemia = anemia;
     }
 
-    public void setHb(float hb) {
+    public void setHb(float hb) { //when setting the Hb, it establishes an index according to the Hb value for later calculation of the final index
         this.hb = hb;
-        if(hb >= 11 && hb <= 13.5){
-            incrementIndex(3);
+        if(hb >= 11 && hb <= 13.5){ //depending on the value, it gives an score from 1 to 5
+            incrementIndex(3); // this Hb value is deterministic for mild anemia so it has a score (importance) of 3
         }
         if(hb > 8 && hb < 11){
-            incrementIndex(4);
+            incrementIndex(4); //this Hb value indicates moderate anemia so it has a higher weigh
         }
         if(hb <= 8){
-            incrementIndex(5);
+            incrementIndex(5); //hb value that indicates severe anemia, it has the higher index indicating higher risk
         }
     }
 
@@ -362,7 +362,7 @@ public class Parameters {
         this.epo = epo;
     }
 
-    public void setHematocrit(int hematocrit) {
+    public void setHematocrit(int hematocrit) { //hematocrit below a certain value is also a deterministic parameter for diagnosisng anemia
         this.hematocrit = hematocrit;
         if(hematocrit < 53){
             incrementIndex(4);
@@ -389,7 +389,7 @@ public class Parameters {
         this.bloodVolume = bloodVolume;
     }
 
-    public void setRbc(float rbc) {
+    public void setRbc(float rbc) { //rbc below a certain value also contributes to the risk of having anemia
         this.rbc = rbc;
         if(rbc < 5.3){
             incrementIndex(4);
@@ -398,10 +398,10 @@ public class Parameters {
 
     public void setMcv(int mcv) {
         this.mcv = mcv;
-        if(mcv < 80){
+        if(mcv < 80){ //indicates possible microcytic anemia
             incrementIndex(3);
         }
-        if(mcv > 100){
+        if(mcv > 100){ //indicates possible macrocytic anemia
             incrementIndex(3);
         }
     }
@@ -430,7 +430,7 @@ public class Parameters {
         this.haptoglobin = haptoglobin;
     }
 
-    public void setFerritin(float ferritin) {
+    public void setFerritin(float ferritin) { //ferritin below 12 is a minor sign of anemia but it also counts
         this.ferritin = ferritin;
         if(ferritin < 12){
             incrementIndex(2);
@@ -458,7 +458,7 @@ public class Parameters {
 
     }
 
-    public void setSkinPalenes(boolean skinPalenes) {
+    public void setSkinPalenes(boolean skinPalenes) { //this is a common sign of having anemia but it is not that risky at all
         this.skinPalenes = skinPalenes;
         incrementIndex(1);
     }
@@ -495,17 +495,17 @@ public class Parameters {
         this.headAche = headAche;
     }
 
-    public void setFatigue(boolean fatigue) {
+    public void setFatigue(boolean fatigue) { //common sign of anemia with a minimum score as it has no much importance
         this.fatigue = fatigue;
         incrementIndex(1);
     }
 
-    public void setMusclePain(boolean musclePain) {
+    public void setMusclePain(boolean musclePain) { //common sign of anemia with a minimum score as it has no much importance
         this.musclePain = musclePain;
         incrementIndex(1);
     }
 
-    public void setDyspnea(boolean dyspnea) {
+    public void setDyspnea(boolean dyspnea) { //common sign of anemia with a minimum score as it has no much importance
         this.dyspnea = dyspnea;
         incrementIndex(1);
     }
@@ -595,6 +595,7 @@ public class Parameters {
         this.index = this.index + index;
     }
 
+    //method that calculates the risk of having anemia according to the total sum of all the scores
     public void calculateRisk(){
         if(this.index>= 17){
             this.setRisk(RiskProbability.HIGH);

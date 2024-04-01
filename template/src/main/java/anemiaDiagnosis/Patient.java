@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-/**
- * @author alberto.gildelafuent
- */
+
 public class Patient {
 
     private String name;
@@ -24,14 +22,6 @@ public class Patient {
         parameters = new Parameters();
     }
 
-
-
-
-    public void setAnemia(Anemia anemia) {
-        this.anemia = anemia;
-    }
-
-
     public String getName() {
         return name;
     }
@@ -43,7 +33,6 @@ public class Patient {
     public int getId_patient() {
         return id_patient;
     }
-
     public Anemia getAnemia() {
         return anemia;
     }
@@ -51,7 +40,21 @@ public class Patient {
         return parameters;
     }
 
-    public File storeFinalReport() throws FileNotFoundException {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+    public void setAnemia(Anemia anemia) {
+        this.anemia = anemia;
+    }
+    public void setParameters(Parameters parameters) {
+        this.parameters = parameters;
+    }
+
+    public File storeFinalReport() throws FileNotFoundException { //creates a txt file with the patient data
         File file = new File("Reports\\" + name + "_" + surname + ".txt");
         PrintWriter pw = new PrintWriter(file);
         pw.println(this.toString());
@@ -59,18 +62,20 @@ public class Patient {
         return file;
     }
 
-    @Override //calcula un código hash basado en el atributo id_operation del objeto actual
-    public int hashCode() { //hashCode para obtener el código hash de un objeto (valor numérico que representa de manera única el estado de un objeto)
-        int hash = 7; //Inicializa una variable local hash con un valor de inicio de 7. Este valor es una convención y puede ser cualquier valor inicial.
-        /*Calcula el código hash combinando el valor actual de hash con el valor de id_operation. Se utiliza una fórmula simple para calcular el código hash,
-        que generalmente implica multiplicar el código hash existente por un número primo grande (en este caso, 89) y luego sumar el valor del atributo
-        id_operation.*/
+    @Override //calculates a hash code based in the id_patient attribute of the class
+    public int hashCode() { //hashCode for obtaining the hash code of an object (numeric value that respresents in an unique way the object status )
+        int hash = 7; //initialize a local hash variable with an initial value of 7. This value could be any inital value.
+
+        //Calculates the hash code combining the actual hash value and the value of id_operation.Easy way of calculating the hash code
+        //that multiplies the existing hash code by a prime number (89) then. it adds the value of the attribute id_operation
+        //id_operation
         hash = 89 * hash + this.id_patient;
         return hash;
     }
 
-    /*Declara el método equals(), que toma un objeto como argumento y devuelve un valor booleano que indica si
-    el objeto actual es igual al objeto proporcionado como argumento.*/
+    //takes an object as the argument adn returns a boolean that indicates if the actual object is
+    //the same as the object that has been passed as the argument
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -82,8 +87,8 @@ public class Patient {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Patient other = (Patient) obj; //realiza un casting del objeto proporcionado (obj) a una instancia
-        // de la clase Operation, ya que ahora se sabe que son de la misma clase.
+        final Patient other = (Patient) obj; //casts the propocionated object (obj) to an instance
+        // of the class Patient, as it now knows that they are the same object
         if (this.id_patient != other.id_patient) {
             return false;
         }

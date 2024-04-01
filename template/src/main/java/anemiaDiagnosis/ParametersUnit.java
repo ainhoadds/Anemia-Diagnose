@@ -4,9 +4,9 @@ import org.drools.ruleunits.api.DataSource;
 import org.drools.ruleunits.api.DataStore;
 import org.drools.ruleunits.api.RuleUnitData;
 
-public class ParametersUnit implements RuleUnitData { //La clase implementa el interfaz RuleUnitDta
+public class ParametersUnit implements RuleUnitData { //ruleUnit allows working with rule units
 
-    private final DataStore<Parameters> parameters;
+    private final DataStore<Parameters> parameters; //it will store Parameters
     public ParametersUnit() {
         this(DataSource.createStore());
     }
