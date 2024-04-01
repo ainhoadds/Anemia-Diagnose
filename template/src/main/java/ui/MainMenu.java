@@ -67,7 +67,10 @@ public class MainMenu {
                         if (parameters.getAnemia() == null) {
                             parameters.calculateRisk();
                         }
-                    }finally {
+
+                    }catch(NullPointerException np) {
+                        System.out.println("ERROR: You must first register patient and symptoms to fire the rules.");
+                    }finally{
                         instance.close();
                     }
                     break;
