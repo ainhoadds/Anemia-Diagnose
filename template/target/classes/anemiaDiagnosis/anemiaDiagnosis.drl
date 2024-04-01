@@ -72,7 +72,7 @@ when
     $parameters : /parameters[hb > 8 && hb < 13.5,hematocrit < 53 , plaquets > 7.4, anysocytosis > 11.5 , leucocytes > 4.5,
      rbc > 4.5 && rbc < 5.3, fe > 60 && fe < 170, haptoglobin > 41, ferritin < 12,
      b12 > 200, folicAcid > 2.7, glucocorticoids < 25 , retyculocytes > 2.5 && retyculocytes != 0, mcv < 80, mchc < 310,
-     bilirubin > 1, ldh > 150, folicAcid > 2.7,
+     bilirubin > 1, ldh > 150,
      splenomegalia == true, cranealBallooning == true, aplasticCrisis == true, bacterianInfection == true, osteoporosis == true, boneDeformation == true, maxilarBoneHyperplasia == true]
 then
     modify ($parameters) { setAnemia(Anemia.HEREDITARY_SPHEROCYTOSIS)}

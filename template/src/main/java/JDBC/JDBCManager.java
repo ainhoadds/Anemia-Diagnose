@@ -4,6 +4,8 @@ import interfaces.DBManager;
 import pojos.Role;
 import pojos.User;
 
+import java.io.File;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -26,7 +26,7 @@ Analytic Parameters:
  -Iron in Urine: false
 
 Patient symptoms:
- -Skin paleness: true
+ -Skin paleness: false
  -Tachycardia: false
  -Tinnitus: false
  -Palpitations: false
@@ -57,4 +57,4 @@ Patient symptoms:
  -Paresthesia: false
  -Petechiae: false
 
-Anemia risk probability: MODERATE
+Anemia risk probability: LOW
